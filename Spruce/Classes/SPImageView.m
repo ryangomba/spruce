@@ -23,8 +23,11 @@
 }
 
 - (void)setImageURL:(NSURL *)imageURL {
-    _imageURL = imageURL;
-    [self fetchImage];
+    if (![imageURL isEqual:_imageURL]) {
+        _imageURL = imageURL;
+        [self setImage:nil];
+        [self fetchImage];
+    }
 }
 
 

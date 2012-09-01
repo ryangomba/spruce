@@ -20,6 +20,7 @@
 @property (nonatomic, assign) CTFontRef largeFont;
 @property (nonatomic, assign) CGColorRef defaultTextColor;
 @property (nonatomic, assign) CGColorRef linkTextColor;
+@property (nonatomic, assign) dispatch_queue_t attributeQueue;
 
 @end
 
@@ -47,9 +48,9 @@
 //    }
 }
 
-- (id)initWithString:(NSString *)string {
+- (id)init {
     if (self = [super init]) {
-        [self setString:string];
+        [self setAttributeQueue:dispatch_queue_create("attributedStringAttributorQueue", NULL)];
     }
     return self;
 }
@@ -100,16 +101,26 @@
 
 - (CGColorRef)defaultTextColor {
     if (_defaultTextColor == NULL) {
-        _defaultTextColor = [HEX_COLOR(0x555555) CGColor];
+        _defaultTextColor = CGColorRetain([HEX_COLOR(0x555555) CGColor]);
     }
     return _defaultTextColor;
 }
 
 - (CGColorRef)linkTextColor {
     if (_linkTextColor == NULL) {
-        _linkTextColor = [HEX_COLOR(0x2386aa) CGColor];
+        _linkTextColor = CGColorRetain([HEX_COLOR(0x2386aa) CGColor]);
     }
     return _linkTextColor;
+}
+
+- (void)setAttributedString:(NSMutableAttributedString *)attributedString {
+    _attributedString = attributedString;
+}
+
+- (void)addAttribute:(CFTypeRef)attribute value:(CFTypeRef)value range:(NSRange)range {
+    dispatch_sync(self.attributeQueue, ^{
+        [self.attributedString addAttribute:(__bridge id)attribute value:(__bridge id)value range:range];
+    });
 }
 
 
@@ -118,9 +129,13 @@
 
 - (void)setString:(NSString *)string {
     _string = [string copy];
+    
     [self setAttributedString:[[NSMutableAttributedString alloc] initWithString:_string]];
-    [self.attributedString addAttribute:(id)kCTFontAttributeName value:(id)self.defaultFont range:NSMakeRange(0, [string length])];
-    [self.attributedString addAttribute:(id)kCTParagraphStyleAttributeName value:(id)self.paragraphStyle range:NSMakeRange(0, [string length])];
+    
+    NSRange fullRange = NSMakeRange(0, [_string length]);
+    [self addAttribute:kCTFontAttributeName value:self.defaultFont range:fullRange];
+    [self addAttribute:kCTParagraphStyleAttributeName value:self.paragraphStyle range:fullRange];
+    [self addAttribute:kCTForegroundColorAttributeName value:self.defaultTextColor range:fullRange];
 }
 
 
@@ -132,7 +147,7 @@
 }
 
 - (void)makeLarge:(NSRange)range {
-    [self.attributedString addAttribute:(id)kCTFontAttributeName value:(id)self.largeFont range:range];
+    [self addAttribute:kCTFontAttributeName value:self.largeFont range:range];
 }
 
 - (void)makeBold {
@@ -140,7 +155,7 @@
 }
 
 - (void)makeBold:(NSRange)range {
-    [self.attributedString addAttribute:(id)kCTFontAttributeName value:(id)self.boldFont range:range];
+    [self addAttribute:kCTFontAttributeName value:self.boldFont range:range];
 }
 
 - (void)makeLink {
@@ -148,7 +163,7 @@
 }
 
 - (void)makeLink:(NSRange)range {
-    [self.attributedString addAttribute:(id)kCTForegroundColorAttributeName value:(id)self.linkTextColor range:range];
+    [self addAttribute:kCTForegroundColorAttributeName value:self.linkTextColor range:range];
 }
 
 

@@ -35,9 +35,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.view setBackgroundColor:HEX_COLOR(0xebebe9)];
-    
     tableView_ = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
+    [tableView_ setAutoresizingMask:UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth];
+    [tableView_ setBackgroundColor:HEX_COLOR(0xebebe9)];
     [tableView_ setDataSource:self];
     [tableView_ setDelegate:self];
     [self.view addSubview:tableView_];

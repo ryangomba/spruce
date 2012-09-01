@@ -46,8 +46,27 @@
 }
 
 - (void)drawRect:(CGRect)rect {
-    CGPoint textOrigin = CGPointMake(2 * kHorizontalPadding + kImageSize, kTopPadding);
+    CGPoint textOrigin = CGPointMake(2 * kHorizontalPadding + kImageSize, kTopPadding - 2.0f);
     [self drawAttributedString:self.post.attributedText atPoint:textOrigin width:kTextWith];
+    
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextSetLineWidth(context, 0.5f);
+    CGFloat lineLength = self.bounds.size.width;
+    CGFloat lineY = self.bounds.size.height - 1.0f;
+    
+    [HEX_COLOR(0xaaaaaa) set];
+    CGContextBeginPath(context);
+    CGContextMoveToPoint(context, 0.0f, lineY);
+    CGContextAddLineToPoint(context, lineLength, lineY);
+    CGContextStrokePath(context);
+    
+    lineY += 0.5f;
+    
+    [HEX_COLOR(0xffffff) set];
+    CGContextBeginPath(context);
+    CGContextMoveToPoint(context, 0.0f, lineY);
+    CGContextAddLineToPoint(context, lineLength, lineY);
+    CGContextStrokePath(context);
 }
 
 - (void)layoutSubviews {

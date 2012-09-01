@@ -10,8 +10,6 @@
 
 @interface SPAttributedStringCreator : NSObject
 
-- (id)initWithString:(NSString *)string;
-
 - (void)setString:(NSString *)string;
 
 - (void)makeLarge;
