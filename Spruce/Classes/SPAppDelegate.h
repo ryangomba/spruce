@@ -6,8 +6,6 @@
 //  Copyright (c) 2012 Ryan Gomba. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-
 @interface SPAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;

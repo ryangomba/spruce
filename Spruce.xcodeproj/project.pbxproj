@@ -12,7 +12,26 @@
 		940CE7FB15F261A6000140FB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 940CE7FA15F261A6000140FB /* CoreGraphics.framework */; };
 		940CE80115F261A7000140FB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 940CE7FF15F261A7000140FB /* InfoPlist.strings */; };
 		940CE80315F261A7000140FB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 940CE80215F261A7000140FB /* main.m */; };
-		940CE80715F261A7000140FB /* SPAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 940CE80615F261A7000140FB /* SPAppDelegate.m */; };
+		940CE80F15F2641C000140FB /* SPAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 940CE80E15F2641C000140FB /* SPAppDelegate.m */; };
+		940CE81215F2642F000140FB /* navbar-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 940CE81115F2642F000140FB /* navbar-bg@2x.png */; };
+		940CE81515F26535000140FB /* Knockout-50.otf in Resources */ = {isa = PBXBuildFile; fileRef = 940CE81415F26535000140FB /* Knockout-50.otf */; };
+		940CE81C15F2671B000140FB /* SPFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 940CE81B15F2671B000140FB /* SPFeedViewController.m */; };
+		940CE81F15F267D2000140FB /* SPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 940CE81E15F267D2000140FB /* SPViewController.m */; };
+		940CE82215F26AF7000140FB /* NSURL+AppDotNet.m in Sources */ = {isa = PBXBuildFile; fileRef = 940CE82115F26AF7000140FB /* NSURL+AppDotNet.m */; };
+		940CE82515F26D93000140FB /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 940CE82415F26D93000140FB /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		940CE82815F27014000140FB /* SPPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 940CE82715F27014000140FB /* SPPost.m */; };
+		940CE82B15F2721B000140FB /* NSDictionary+Safe.m in Sources */ = {isa = PBXBuildFile; fileRef = 940CE82A15F2721B000140FB /* NSDictionary+Safe.m */; };
+		940CE82E15F274E5000140FB /* SPUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 940CE82D15F274E5000140FB /* SPUser.m */; };
+		940CE83115F2784F000140FB /* NSDate+AppDotNet.m in Sources */ = {isa = PBXBuildFile; fileRef = 940CE83015F2784F000140FB /* NSDate+AppDotNet.m */; };
+		940CE83415F27C09000140FB /* SPFeedPostTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 940CE83315F27C08000140FB /* SPFeedPostTableViewCell.m */; };
+		940CE83715F27DCD000140FB /* SPImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 940CE83615F27DCD000140FB /* SPImageView.m */; };
+		940CE83A15F27F1A000140FB /* UIImage+Decode.m in Sources */ = {isa = PBXBuildFile; fileRef = 940CE83915F27F19000140FB /* UIImage+Decode.m */; };
+		940CE83D15F28029000140FB /* SPImageLoadQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 940CE83C15F28028000140FB /* SPImageLoadQueue.m */; };
+		940CE84015F2803B000140FB /* SPImageDecodeQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 940CE83F15F2803A000140FB /* SPImageDecodeQueue.m */; };
+		940CE84315F28054000140FB /* SPNetworkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 940CE84215F28053000140FB /* SPNetworkQueue.m */; };
+		940CE84D15F28C1F000140FB /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 940CE84C15F28C1E000140FB /* CoreText.framework */; };
+		940CE85115F292D7000140FB /* SPAttributedStringCreator.m in Sources */ = {isa = PBXBuildFile; fileRef = 940CE85015F292D7000140FB /* SPAttributedStringCreator.m */; };
+		940CE85415F2A18C000140FB /* UIView+AttributedString.m in Sources */ = {isa = PBXBuildFile; fileRef = 940CE85315F2A18C000140FB /* UIView+AttributedString.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,8 +43,44 @@
 		940CE80015F261A7000140FB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		940CE80215F261A7000140FB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		940CE80415F261A7000140FB /* Spruce-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Spruce-Prefix.pch"; sourceTree = "<group>"; };
-		940CE80515F261A7000140FB /* SPAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPAppDelegate.h; sourceTree = "<group>"; };
-		940CE80615F261A7000140FB /* SPAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPAppDelegate.m; sourceTree = "<group>"; };
+		940CE80D15F2641C000140FB /* SPAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPAppDelegate.h; path = Classes/SPAppDelegate.h; sourceTree = "<group>"; };
+		940CE80E15F2641C000140FB /* SPAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPAppDelegate.m; path = Classes/SPAppDelegate.m; sourceTree = "<group>"; };
+		940CE81115F2642F000140FB /* navbar-bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navbar-bg@2x.png"; sourceTree = "<group>"; };
+		940CE81415F26535000140FB /* Knockout-50.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Knockout-50.otf"; sourceTree = "<group>"; };
+		940CE81A15F2671B000140FB /* SPFeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPFeedViewController.h; path = Classes/SPFeedViewController.h; sourceTree = "<group>"; };
+		940CE81B15F2671B000140FB /* SPFeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPFeedViewController.m; path = Classes/SPFeedViewController.m; sourceTree = "<group>"; };
+		940CE81D15F267D2000140FB /* SPViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPViewController.h; path = Classes/SPViewController.h; sourceTree = "<group>"; };
+		940CE81E15F267D2000140FB /* SPViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPViewController.m; path = Classes/SPViewController.m; sourceTree = "<group>"; };
+		940CE82015F26AF7000140FB /* NSURL+AppDotNet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSURL+AppDotNet.h"; path = "Classes/NSURL+AppDotNet.h"; sourceTree = "<group>"; };
+		940CE82115F26AF7000140FB /* NSURL+AppDotNet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSURL+AppDotNet.m"; path = "Classes/NSURL+AppDotNet.m"; sourceTree = "<group>"; };
+		940CE82315F26D92000140FB /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSONKit.h; path = Classes/JSONKit.h; sourceTree = "<group>"; };
+		940CE82415F26D93000140FB /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSONKit.m; path = Classes/JSONKit.m; sourceTree = "<group>"; };
+		940CE82615F27014000140FB /* SPPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPPost.h; path = Classes/SPPost.h; sourceTree = "<group>"; };
+		940CE82715F27014000140FB /* SPPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPPost.m; path = Classes/SPPost.m; sourceTree = "<group>"; };
+		940CE82915F2721B000140FB /* NSDictionary+Safe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDictionary+Safe.h"; path = "Classes/NSDictionary+Safe.h"; sourceTree = "<group>"; };
+		940CE82A15F2721B000140FB /* NSDictionary+Safe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDictionary+Safe.m"; path = "Classes/NSDictionary+Safe.m"; sourceTree = "<group>"; };
+		940CE82C15F274E5000140FB /* SPUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPUser.h; path = Classes/SPUser.h; sourceTree = "<group>"; };
+		940CE82D15F274E5000140FB /* SPUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPUser.m; path = Classes/SPUser.m; sourceTree = "<group>"; };
+		940CE82F15F2784F000140FB /* NSDate+AppDotNet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDate+AppDotNet.h"; path = "Classes/NSDate+AppDotNet.h"; sourceTree = "<group>"; };
+		940CE83015F2784F000140FB /* NSDate+AppDotNet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDate+AppDotNet.m"; path = "Classes/NSDate+AppDotNet.m"; sourceTree = "<group>"; };
+		940CE83215F27C08000140FB /* SPFeedPostTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPFeedPostTableViewCell.h; path = Classes/SPFeedPostTableViewCell.h; sourceTree = "<group>"; };
+		940CE83315F27C08000140FB /* SPFeedPostTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPFeedPostTableViewCell.m; path = Classes/SPFeedPostTableViewCell.m; sourceTree = "<group>"; };
+		940CE83515F27DCD000140FB /* SPImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPImageView.h; path = Classes/SPImageView.h; sourceTree = "<group>"; };
+		940CE83615F27DCD000140FB /* SPImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPImageView.m; path = Classes/SPImageView.m; sourceTree = "<group>"; };
+		940CE83815F27F19000140FB /* UIImage+Decode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+Decode.h"; path = "Classes/UIImage+Decode.h"; sourceTree = "<group>"; };
+		940CE83915F27F19000140FB /* UIImage+Decode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Decode.m"; path = "Classes/UIImage+Decode.m"; sourceTree = "<group>"; };
+		940CE83B15F28028000140FB /* SPImageLoadQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPImageLoadQueue.h; path = Classes/SPImageLoadQueue.h; sourceTree = "<group>"; };
+		940CE83C15F28028000140FB /* SPImageLoadQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPImageLoadQueue.m; path = Classes/SPImageLoadQueue.m; sourceTree = "<group>"; };
+		940CE83E15F2803A000140FB /* SPImageDecodeQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPImageDecodeQueue.h; path = Classes/SPImageDecodeQueue.h; sourceTree = "<group>"; };
+		940CE83F15F2803A000140FB /* SPImageDecodeQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPImageDecodeQueue.m; path = Classes/SPImageDecodeQueue.m; sourceTree = "<group>"; };
+		940CE84115F28053000140FB /* SPNetworkQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPNetworkQueue.h; path = Classes/SPNetworkQueue.h; sourceTree = "<group>"; };
+		940CE84215F28053000140FB /* SPNetworkQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPNetworkQueue.m; path = Classes/SPNetworkQueue.m; sourceTree = "<group>"; };
+		940CE84B15F280E9000140FB /* SPSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPSingleton.h; sourceTree = "<group>"; };
+		940CE84C15F28C1E000140FB /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		940CE84F15F292D7000140FB /* SPAttributedStringCreator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPAttributedStringCreator.h; path = Classes/SPAttributedStringCreator.h; sourceTree = "<group>"; };
+		940CE85015F292D7000140FB /* SPAttributedStringCreator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPAttributedStringCreator.m; path = Classes/SPAttributedStringCreator.m; sourceTree = "<group>"; };
+		940CE85215F2A18C000140FB /* UIView+AttributedString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+AttributedString.h"; path = "Classes/UIView+AttributedString.h"; sourceTree = "<group>"; };
+		940CE85315F2A18C000140FB /* UIView+AttributedString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+AttributedString.m"; path = "Classes/UIView+AttributedString.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +91,7 @@
 				940CE7F715F261A6000140FB /* UIKit.framework in Frameworks */,
 				940CE7F915F261A6000140FB /* Foundation.framework in Frameworks */,
 				940CE7FB15F261A6000140FB /* CoreGraphics.framework in Frameworks */,
+				940CE84D15F28C1F000140FB /* CoreText.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,8 +128,17 @@
 		940CE7FC15F261A7000140FB /* Spruce */ = {
 			isa = PBXGroup;
 			children = (
-				940CE80515F261A7000140FB /* SPAppDelegate.h */,
-				940CE80615F261A7000140FB /* SPAppDelegate.m */,
+				940CE80D15F2641C000140FB /* SPAppDelegate.h */,
+				940CE80E15F2641C000140FB /* SPAppDelegate.m */,
+				940CE84815F28094000140FB /* View Controllers */,
+				940CE84915F280A2000140FB /* Views */,
+				940CE84715F28081000140FB /* Models */,
+				940CE84E15F292A9000140FB /* Helpers */,
+				940CE84615F28075000140FB /* Categories */,
+				940CE84415F2805B000140FB /* Queues */,
+				940CE84515F28064000140FB /* Vendor */,
+				940CE81015F2642F000140FB /* Images */,
+				940CE81315F26535000140FB /* Fonts */,
 				940CE7FD15F261A7000140FB /* Supporting Files */,
 			);
 			path = Spruce;
@@ -86,8 +151,108 @@
 				940CE7FF15F261A7000140FB /* InfoPlist.strings */,
 				940CE80215F261A7000140FB /* main.m */,
 				940CE80415F261A7000140FB /* Spruce-Prefix.pch */,
+				940CE84B15F280E9000140FB /* SPSingleton.h */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		940CE81015F2642F000140FB /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				940CE81115F2642F000140FB /* navbar-bg@2x.png */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		940CE81315F26535000140FB /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				940CE81415F26535000140FB /* Knockout-50.otf */,
+			);
+			name = Fonts;
+			path = Spruce/Fonts;
+			sourceTree = SOURCE_ROOT;
+		};
+		940CE84415F2805B000140FB /* Queues */ = {
+			isa = PBXGroup;
+			children = (
+				940CE83B15F28028000140FB /* SPImageLoadQueue.h */,
+				940CE83C15F28028000140FB /* SPImageLoadQueue.m */,
+				940CE83E15F2803A000140FB /* SPImageDecodeQueue.h */,
+				940CE83F15F2803A000140FB /* SPImageDecodeQueue.m */,
+				940CE84115F28053000140FB /* SPNetworkQueue.h */,
+				940CE84215F28053000140FB /* SPNetworkQueue.m */,
+			);
+			name = Queues;
+			sourceTree = "<group>";
+		};
+		940CE84515F28064000140FB /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				940CE84C15F28C1E000140FB /* CoreText.framework */,
+				940CE82315F26D92000140FB /* JSONKit.h */,
+				940CE82415F26D93000140FB /* JSONKit.m */,
+			);
+			name = Vendor;
+			sourceTree = "<group>";
+		};
+		940CE84615F28075000140FB /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				940CE82015F26AF7000140FB /* NSURL+AppDotNet.h */,
+				940CE82115F26AF7000140FB /* NSURL+AppDotNet.m */,
+				940CE82915F2721B000140FB /* NSDictionary+Safe.h */,
+				940CE82A15F2721B000140FB /* NSDictionary+Safe.m */,
+				940CE82F15F2784F000140FB /* NSDate+AppDotNet.h */,
+				940CE83015F2784F000140FB /* NSDate+AppDotNet.m */,
+				940CE83815F27F19000140FB /* UIImage+Decode.h */,
+				940CE83915F27F19000140FB /* UIImage+Decode.m */,
+				940CE85215F2A18C000140FB /* UIView+AttributedString.h */,
+				940CE85315F2A18C000140FB /* UIView+AttributedString.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
+		940CE84715F28081000140FB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				940CE82C15F274E5000140FB /* SPUser.h */,
+				940CE82D15F274E5000140FB /* SPUser.m */,
+				940CE82615F27014000140FB /* SPPost.h */,
+				940CE82715F27014000140FB /* SPPost.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		940CE84815F28094000140FB /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				940CE81D15F267D2000140FB /* SPViewController.h */,
+				940CE81E15F267D2000140FB /* SPViewController.m */,
+				940CE81A15F2671B000140FB /* SPFeedViewController.h */,
+				940CE81B15F2671B000140FB /* SPFeedViewController.m */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		940CE84915F280A2000140FB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				940CE83215F27C08000140FB /* SPFeedPostTableViewCell.h */,
+				940CE83315F27C08000140FB /* SPFeedPostTableViewCell.m */,
+				940CE83515F27DCD000140FB /* SPImageView.h */,
+				940CE83615F27DCD000140FB /* SPImageView.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		940CE84E15F292A9000140FB /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				940CE84F15F292D7000140FB /* SPAttributedStringCreator.h */,
+				940CE85015F292D7000140FB /* SPAttributedStringCreator.m */,
+			);
+			name = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -143,6 +308,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				940CE80115F261A7000140FB /* InfoPlist.strings in Resources */,
+				940CE81215F2642F000140FB /* navbar-bg@2x.png in Resources */,
+				940CE81515F26535000140FB /* Knockout-50.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -154,7 +321,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				940CE80315F261A7000140FB /* main.m in Sources */,
-				940CE80715F261A7000140FB /* SPAppDelegate.m in Sources */,
+				940CE80F15F2641C000140FB /* SPAppDelegate.m in Sources */,
+				940CE81C15F2671B000140FB /* SPFeedViewController.m in Sources */,
+				940CE81F15F267D2000140FB /* SPViewController.m in Sources */,
+				940CE82215F26AF7000140FB /* NSURL+AppDotNet.m in Sources */,
+				940CE82515F26D93000140FB /* JSONKit.m in Sources */,
+				940CE82815F27014000140FB /* SPPost.m in Sources */,
+				940CE82B15F2721B000140FB /* NSDictionary+Safe.m in Sources */,
+				940CE82E15F274E5000140FB /* SPUser.m in Sources */,
+				940CE83115F2784F000140FB /* NSDate+AppDotNet.m in Sources */,
+				940CE83415F27C09000140FB /* SPFeedPostTableViewCell.m in Sources */,
+				940CE83715F27DCD000140FB /* SPImageView.m in Sources */,
+				940CE83A15F27F1A000140FB /* UIImage+Decode.m in Sources */,
+				940CE83D15F28029000140FB /* SPImageLoadQueue.m in Sources */,
+				940CE84015F2803B000140FB /* SPImageDecodeQueue.m in Sources */,
+				940CE84315F28054000140FB /* SPNetworkQueue.m in Sources */,
+				940CE85115F292D7000140FB /* SPAttributedStringCreator.m in Sources */,
+				940CE85415F2A18C000140FB /* UIView+AttributedString.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
