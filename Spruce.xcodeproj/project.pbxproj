@@ -1,0 +1,269 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		940CE7F715F261A6000140FB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 940CE7F615F261A6000140FB /* UIKit.framework */; };
+		940CE7F915F261A6000140FB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 940CE7F815F261A6000140FB /* Foundation.framework */; };
+		940CE7FB15F261A6000140FB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 940CE7FA15F261A6000140FB /* CoreGraphics.framework */; };
+		940CE80115F261A7000140FB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 940CE7FF15F261A7000140FB /* InfoPlist.strings */; };
+		940CE80315F261A7000140FB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 940CE80215F261A7000140FB /* main.m */; };
+		940CE80715F261A7000140FB /* SPAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 940CE80615F261A7000140FB /* SPAppDelegate.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		940CE7F215F261A6000140FB /* Spruce.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spruce.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		940CE7F615F261A6000140FB /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		940CE7F815F261A6000140FB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		940CE7FA15F261A6000140FB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		940CE7FE15F261A7000140FB /* Spruce-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Spruce-Info.plist"; sourceTree = "<group>"; };
+		940CE80015F261A7000140FB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		940CE80215F261A7000140FB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		940CE80415F261A7000140FB /* Spruce-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Spruce-Prefix.pch"; sourceTree = "<group>"; };
+		940CE80515F261A7000140FB /* SPAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPAppDelegate.h; sourceTree = "<group>"; };
+		940CE80615F261A7000140FB /* SPAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPAppDelegate.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		940CE7EF15F261A6000140FB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				940CE7F715F261A6000140FB /* UIKit.framework in Frameworks */,
+				940CE7F915F261A6000140FB /* Foundation.framework in Frameworks */,
+				940CE7FB15F261A6000140FB /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		940CE7E715F261A6000140FB = {
+			isa = PBXGroup;
+			children = (
+				940CE7FC15F261A7000140FB /* Spruce */,
+				940CE7F515F261A6000140FB /* Frameworks */,
+				940CE7F315F261A6000140FB /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		940CE7F315F261A6000140FB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				940CE7F215F261A6000140FB /* Spruce.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		940CE7F515F261A6000140FB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				940CE7F615F261A6000140FB /* UIKit.framework */,
+				940CE7F815F261A6000140FB /* Foundation.framework */,
+				940CE7FA15F261A6000140FB /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		940CE7FC15F261A7000140FB /* Spruce */ = {
+			isa = PBXGroup;
+			children = (
+				940CE80515F261A7000140FB /* SPAppDelegate.h */,
+				940CE80615F261A7000140FB /* SPAppDelegate.m */,
+				940CE7FD15F261A7000140FB /* Supporting Files */,
+			);
+			path = Spruce;
+			sourceTree = "<group>";
+		};
+		940CE7FD15F261A7000140FB /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				940CE7FE15F261A7000140FB /* Spruce-Info.plist */,
+				940CE7FF15F261A7000140FB /* InfoPlist.strings */,
+				940CE80215F261A7000140FB /* main.m */,
+				940CE80415F261A7000140FB /* Spruce-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		940CE7F115F261A6000140FB /* Spruce */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 940CE80A15F261A7000140FB /* Build configuration list for PBXNativeTarget "Spruce" */;
+			buildPhases = (
+				940CE7EE15F261A6000140FB /* Sources */,
+				940CE7EF15F261A6000140FB /* Frameworks */,
+				940CE7F015F261A6000140FB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Spruce;
+			productName = Spruce;
+			productReference = 940CE7F215F261A6000140FB /* Spruce.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		940CE7E915F261A6000140FB /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = SP;
+				LastUpgradeCheck = 0440;
+				ORGANIZATIONNAME = "Ryan Gomba";
+			};
+			buildConfigurationList = 940CE7EC15F261A6000140FB /* Build configuration list for PBXProject "Spruce" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 940CE7E715F261A6000140FB;
+			productRefGroup = 940CE7F315F261A6000140FB /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				940CE7F115F261A6000140FB /* Spruce */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		940CE7F015F261A6000140FB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				940CE80115F261A7000140FB /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		940CE7EE15F261A6000140FB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				940CE80315F261A7000140FB /* main.m in Sources */,
+				940CE80715F261A7000140FB /* SPAppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		940CE7FF15F261A7000140FB /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				940CE80015F261A7000140FB /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		940CE80815F261A7000140FB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		940CE80915F261A7000140FB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		940CE80B15F261A7000140FB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Spruce/Spruce-Prefix.pch";
+				INFOPLIST_FILE = "Spruce/Spruce-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		940CE80C15F261A7000140FB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Spruce/Spruce-Prefix.pch";
+				INFOPLIST_FILE = "Spruce/Spruce-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		940CE7EC15F261A6000140FB /* Build configuration list for PBXProject "Spruce" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				940CE80815F261A7000140FB /* Debug */,
+				940CE80915F261A7000140FB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		940CE80A15F261A7000140FB /* Build configuration list for PBXNativeTarget "Spruce" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				940CE80B15F261A7000140FB /* Debug */,
+				940CE80C15F261A7000140FB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 940CE7E915F261A6000140FB /* Project object */;
+}
