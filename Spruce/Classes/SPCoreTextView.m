@@ -13,6 +13,13 @@
 #import "SPCoreTextHeightCache.h"
 #import "SPAppDelegate.h"
 
+@interface SPCoreTextView ()
+
+@property (nonatomic, assign) BOOL heightIsValid;
+
+@end
+
+
 @implementation SPCoreTextView
 
 - (id)initWithOrigin:(CGPoint)origin width:(CGFloat)width {
@@ -42,14 +49,14 @@
     if (!_heightIsValid && self.attributedString) {
         [self setHeight:[self.class heightWithAttributedString:self.attributedString width:self.width]];
         [self setNeedsDisplay];
-        _heightIsValid = YES;
+        self.heightIsValid = YES;
     }
     return self.frame.size.height;
 }
 
 - (void)setAttributedString:(NSMutableAttributedString *)attrString {
-    _heightIsValid = NO;
-    _attributedString = attrString;
+    self.heightIsValid = NO;
+    self.attributedString = attrString;
     [self height];
 }
 

@@ -6,9 +6,7 @@
 //  Copyright (c) 2012 Ryan Gomba. All rights reserved.
 //
 
-@interface SPCoreTextView : UIView {
-    BOOL _heightIsValid;
-}
+@interface SPCoreTextView : UIView
 
 @property (nonatomic, strong) NSMutableAttributedString *attributedString;
 @property (nonatomic, assign) CGFloat shadowOffset;

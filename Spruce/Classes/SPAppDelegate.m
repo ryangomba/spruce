@@ -32,15 +32,15 @@
     };
     [[UINavigationBar appearance] setBackgroundImage:navBarImage forBarMetrics:UIBarMetricsDefault];
     [[UINavigationBar appearance] setTitleTextAttributes:textAttributes];
-    [[UINavigationBar appearance] setTitleVerticalPositionAdjustment:2.0f forBarMetrics:UIBarMetricsDefault];
+    [[UINavigationBar appearance] setTitleVerticalPositionAdjustment:1.0f forBarMetrics:UIBarMetricsDefault];
     
     UIImage *defaultButtonImage = [[UIImage imageNamed:@"bar-button-default.png"] stretchableImageWithLeftCapWidth:4 topCapHeight:15];
     [[UIBarButtonItem appearance] setBackgroundImage:defaultButtonImage forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
-    [[UIBarButtonItem appearance] setTitlePositionAdjustment:UIOffsetMake(0.0f, 0.5f) forBarMetrics:UIBarMetricsDefault];
+    [[UIBarButtonItem appearance] setTitlePositionAdjustment:UIOffsetMake(0.5f, 0.0f) forBarMetrics:UIBarMetricsDefault];
     
     UIImage *backButtonImage = [[UIImage imageNamed:@"bar-button-back.png"] stretchableImageWithLeftCapWidth:14 topCapHeight:15];
     [[UIBarButtonItem appearance] setBackButtonBackgroundImage:backButtonImage forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
-    [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(0.0f, 0.5f) forBarMetrics:UIControlStateNormal];
+    [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(0.5f, 0.0f) forBarMetrics:UIControlStateNormal];
     
     // Root View Controller
     

@@ -39,8 +39,19 @@
     [self.webView setAutoresizingMask:UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight];
     [self.webView setDelegate:self];
     [self.view addSubview:self.webView];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:self.url];
     [self.webView loadRequest:request];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    [self.webView stopLoading];
 }
 
 

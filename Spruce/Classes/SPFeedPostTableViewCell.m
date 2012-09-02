@@ -20,6 +20,14 @@
 #define kHorizontalPadding 10
 #define kTextWith 240
 
+@interface SPFeedPostTableViewCell ()
+
+@property (nonatomic, strong) SPAvatarView *avatarView;
+@property (nonatomic, strong) SPCoreTextView *textView;
+
+@end
+
+
 @implementation SPFeedPostTableViewCell
 
 - (id)initWithReuseIdentifier:(NSString *)reuseIdentifier {
@@ -27,16 +35,16 @@
     if (self) {
         [self setSelectionStyle:UITableViewCellEditingStyleNone];
         
-        _avatarView = [[SPAvatarView alloc] initWithUser:nil];
-        [_avatarView setOrigin:CGPointMake(kHorizontalPadding, kTopPadding)];
-        [_avatarView setTarget:self action:@selector(avatarTapped)];
-        [self addSubview:_avatarView];
+        self.avatarView = [[SPAvatarView alloc] initWithUser:nil];
+        [self.avatarView setOrigin:CGPointMake(kHorizontalPadding, kTopPadding)];
+        [self.avatarView setTarget:self action:@selector(avatarTapped)];
+        [self addSubview:self.avatarView];
         
         CGPoint textOrigin = CGPointMake(2 * kHorizontalPadding + kSPAvatarViewDefaultAvatarSize, kTopPadding - 1.0f);
-        _textView = [[SPCoreTextView alloc] initWithOrigin:textOrigin width:kTextWith];
-        [_textView setShadowColor:HEX_COLOR(0xf5f5f5)];
-        [_textView setShadowOffset:1.0f];
-        [self addSubview:_textView];
+        self.textView = [[SPCoreTextView alloc] initWithOrigin:textOrigin width:kTextWith];
+        [self.textView setShadowColor:HEX_COLOR(0xf5f5f5)];
+        [self.textView setShadowOffset:1.0f];
+        [self addSubview:self.textView];
     }
     return self;
 }
@@ -47,10 +55,10 @@
 }
 
 - (void)setPost:(SPPost *)post {
-    _post = post;
+    self.post = post;
     
-    [_avatarView setUser:post.user];
-    [_textView setAttributedString:post.attributedText];
+    [self.avatarView setUser:post.user];
+    [self.textView setAttributedString:post.attributedText];
     
     [self setNeedsDisplay];
 }

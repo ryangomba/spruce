@@ -14,14 +14,7 @@ typedef enum{
 
 @protocol SPPullToRefreshViewDelegate;
 
-@interface SPPullToRefreshView : UIView {
-	UILabel *_lastUpdatedLabel;
-	UILabel *_statusLabel;
-	CALayer *_arrowImage;
-	UIActivityIndicatorView *_activityView;
-    
-    EGOPullRefreshState _state;
-}
+@interface SPPullToRefreshView : UIView
 
 @property(nonatomic, weak) id<SPPullToRefreshViewDelegate> delegate;
 

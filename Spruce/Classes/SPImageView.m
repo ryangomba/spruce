@@ -16,8 +16,8 @@
 @implementation SPImageView
 
 - (void)setImageURL:(NSURL *)imageURL {
-    if (![imageURL isEqual:_imageURL]) {
-        _imageURL = imageURL;
+    if (![imageURL isEqual:self.imageURL]) {
+        self.imageURL = imageURL;
         [self setImage:nil];
         [self fetchImage];
     }
@@ -32,7 +32,7 @@
         return;
     }
     
-    UIImage *cachedDecodedImage = [[SPDecodedImageCache sharedCache] objectForKey:_imageURL];
+    UIImage *cachedDecodedImage = [[SPDecodedImageCache sharedCache] objectForKey:self.imageURL];
     if (cachedDecodedImage) {
         [self setImage:cachedDecodedImage];
         return;
@@ -40,8 +40,8 @@
     
     // TODO flipped images still happening?
     
-    NSURL *decodedImageURL = _imageURL;
-    NSMutableURLRequest *feedRequest = [NSMutableURLRequest requestWithURL:_imageURL];
+    NSURL *decodedImageURL = self.imageURL;
+    NSMutableURLRequest *feedRequest = [NSMutableURLRequest requestWithURL:self.imageURL];
     [NSURLConnection sendAsynchronousRequest:feedRequest queue:[NSOperationQueue mainQueue] completionHandler:
      ^(NSURLResponse *response, NSData *data, NSError *error) {
          [[SPImageDecodeQueue sharedQueue] addOperationWithBlock:^{
@@ -50,7 +50,7 @@
                  [[SPDecodedImageCache sharedCache] setObject:decodedImage forKey:decodedImageURL];
              }
              [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                 if ([decodedImageURL isEqual:_imageURL]) {
+                 if ([decodedImageURL isEqual:self.imageURL]) {
                      [self setImage:decodedImage ?: [UIImage imageWithData:data]];
                  }
              }];

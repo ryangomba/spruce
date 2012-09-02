@@ -10,10 +10,7 @@
 @class SPAvatarView;
 @class SPCoreTextView;
 
-@interface SPFeedPostTableViewCell : UITableViewCell {
-    SPAvatarView *_avatarView;
-    SPCoreTextView *_textView;
-}
+@interface SPFeedPostTableViewCell : UITableViewCell
 
 @property (nonatomic, strong) SPPost *post;
 

@@ -35,20 +35,20 @@
 #pragma mark NSObject
 
 - (void)dealloc {
-//    if (_defaultFont != NULL) {
-//        CFRelease(_defaultFont);
+//    if (self.defaultFont != NULL) {
+//        CFRelease(self.defaultFont);
 //    }
-//    if (_boldFont != NULL) {
-//        CFRelease(_boldFont);
+//    if (self.boldFont != NULL) {
+//        CFRelease(self.boldFont);
 //    }
-//    if (_largeFont != NULL) {
-//        CFRelease(_largeFont);
+//    if (self.largeFont != NULL) {
+//        CFRelease(self.largeFont);
 //    }
-//    if (_defaultTextColor != NULL) {
-//        CFRelease(_defaultTextColor);
+//    if (self.defaultTextColor != NULL) {
+//        CFRelease(self.defaultTextColor);
 //    }
-//    if (_linkTextColor != NULL) {
-//        CFRelease(_linkTextColor);
+//    if (self.linkTextColor != NULL) {
+//        CFRelease(self.linkTextColor);
 //    }
 }
 
@@ -68,7 +68,7 @@
 }
 
 - (CTParagraphStyleRef)paragraphStyle {
-    if (_paragraphStyle == NULL) {
+    if (self.paragraphStyle == NULL) {
         CTTextAlignment paragraphAlignment = self.textAlignment;
         CGFloat maxLineHeight = 18.0;
         CGFloat paragraphSpacingBefore = 2.0f;
@@ -77,55 +77,55 @@
             {kCTParagraphStyleSpecifierMaximumLineHeight, sizeof(CGFloat), &maxLineHeight},
             {kCTParagraphStyleSpecifierParagraphSpacingBefore, sizeof(CGFloat), &paragraphSpacingBefore}
         };
-        _paragraphStyle = CTParagraphStyleCreate(setting, 3);
+        self.paragraphStyle = CTParagraphStyleCreate(setting, 3);
     }
-    return _paragraphStyle;
+    return self.paragraphStyle;
 }
 
 - (CTFontRef)defaultFont {
-    if (_defaultFont == NULL) {
-        _defaultFont = CTFontCreateWithName((CFStringRef)@"HelveticaNeue", 15.0f, NULL);
+    if (self.defaultFont == NULL) {
+        self.defaultFont = CTFontCreateWithName((CFStringRef)@"HelveticaNeue", 15.0f, NULL);
     }
-    return _defaultFont;
+    return self.defaultFont;
 }
 
 - (CTFontRef)boldFont {
-    if (_boldFont == NULL) {
-        _boldFont = CTFontCreateWithName((CFStringRef)@"HelveticaNeue-Bold", 15.0f, NULL);
+    if (self.boldFont == NULL) {
+        self.boldFont = CTFontCreateWithName((CFStringRef)@"HelveticaNeue-Bold", 15.0f, NULL);
     }
-    return _boldFont;
+    return self.boldFont;
 }
 
 - (CTFontRef)largeFont {
-    if (_largeFont == NULL) {
-        _largeFont = CTFontCreateWithName((CFStringRef)@"HelveticaNeue-Bold", 17.0f, NULL);
+    if (self.largeFont == NULL) {
+        self.largeFont = CTFontCreateWithName((CFStringRef)@"HelveticaNeue-Bold", 17.0f, NULL);
     }
-    return _largeFont;
+    return self.largeFont;
 }
 
 - (CGColorRef)defaultTextColor {
-    if (_defaultTextColor == NULL) {
-        _defaultTextColor = CGColorRetain([HEX_COLOR(0x555555) CGColor]);
+    if (self.defaultTextColor == NULL) {
+        self.defaultTextColor = CGColorRetain([HEX_COLOR(0x555555) CGColor]);
     }
-    return _defaultTextColor;
+    return self.defaultTextColor;
 }
 
 - (CGColorRef)linkTextColor {
-    if (_linkTextColor == NULL) {
-        _linkTextColor = CGColorRetain([HEX_COLOR(0x2386aa) CGColor]);
+    if (self.linkTextColor == NULL) {
+        self.linkTextColor = CGColorRetain([HEX_COLOR(0x2386aa) CGColor]);
     }
-    return _linkTextColor;
+    return self.linkTextColor;
 }
 
 - (CGColorRef)tagTextColor {
-    if (_tagTextColor == NULL) {
-        _tagTextColor = CGColorRetain([HEX_COLOR(0x999999) CGColor]);
+    if (self.tagTextColor == NULL) {
+        self.tagTextColor = CGColorRetain([HEX_COLOR(0x999999) CGColor]);
     }
-    return _tagTextColor;
+    return self.tagTextColor;
 }
 
 - (void)setAttributedString:(NSMutableAttributedString *)attributedString {
-    _attributedString = attributedString;
+    self.attributedString = attributedString;
 }
 
 - (void)addAttribute:(CFTypeRef)attribute value:(CFTypeRef)value range:(NSRange)range {
@@ -145,11 +145,11 @@
 #pragma mark Property Methods
 
 - (void)setString:(NSString *)string {
-    _string = [string copy];
+    self.string = [string copy];
     
-    [self setAttributedString:[[NSMutableAttributedString alloc] initWithString:_string]];
+    [self setAttributedString:[[NSMutableAttributedString alloc] initWithString:self.string]];
     
-    NSRange fullRange = NSMakeRange(0, [_string length]);
+    NSRange fullRange = NSMakeRange(0, [self.string length]);
     [self addAttribute:kCTFontAttributeName value:self.defaultFont range:fullRange];
     [self addAttribute:kCTParagraphStyleAttributeName value:self.paragraphStyle range:fullRange];
     [self addAttribute:kCTForegroundColorAttributeName value:self.defaultTextColor range:fullRange];

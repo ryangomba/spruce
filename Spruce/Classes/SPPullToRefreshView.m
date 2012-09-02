@@ -13,6 +13,18 @@
 #define kHeight 98
 #define kArrowFlipAnimationDuration 0.18f
 
+@interface SPPullToRefreshView ()
+
+@property (nonatomic, strong) UILabel *lastUpdatedLabel;
+@property (nonatomic, strong) UILabel *statusLabel;
+@property (nonatomic, strong) CALayer *arrowImage;
+@property (nonatomic, strong) UIActivityIndicatorView *activityView;
+
+@property (nonatomic, assign) EGOPullRefreshState state;
+
+@end
+
+
 @implementation SPPullToRefreshView
 
 
@@ -79,7 +91,7 @@
     [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
     
     NSString *lastUpdatedString = [NSString stringWithFormat:@"Last Updated: %@", [dateFormatter stringFromDate:[NSDate date]]];
-    [_lastUpdatedLabel setText:NSLocalizedString(lastUpdatedString, nil)];
+    [self.lastUpdatedLabel setText:NSLocalizedString(lastUpdatedString, nil)];
 }
 
 - (void)setState:(EGOPullRefreshState)state {
@@ -93,14 +105,14 @@
 			break;
             
 		case EGOOPullRefreshNormal:
-			if (_state == EGOOPullRefreshPulling) {
+			if (self.state == EGOOPullRefreshPulling) {
 				[CATransaction begin];
 				[CATransaction setAnimationDuration:kArrowFlipAnimationDuration];
 				_arrowImage.transform = CATransform3DIdentity;
 				[CATransaction commit];
 			}
 			_statusLabel.text = NSLocalizedString(@"Pull down to refresh...", @"Pull down to refresh status");
-			[_activityView stopAnimating];
+			[self.activityView stopAnimating];
 			[CATransaction begin];
 			[CATransaction setValue:(id)kCFBooleanTrue forKey:kCATransactionDisableActions];
 			_arrowImage.hidden = NO;
@@ -111,7 +123,7 @@
             
 		case EGOOPullRefreshLoading:
 			_statusLabel.text = NSLocalizedString(@"Loading...", @"Loading Status");
-			[_activityView startAnimating];
+			[self.activityView startAnimating];
 			[CATransaction begin];
 			[CATransaction setValue:(id)kCFBooleanTrue forKey:kCATransactionDisableActions];
 			_arrowImage.hidden = YES;
@@ -129,19 +141,19 @@
 #pragma mark UIScrollView Methods
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-	if (_state == EGOOPullRefreshLoading) {
+	if (self.state == EGOOPullRefreshLoading) {
 		CGFloat offset = MAX(scrollView.contentOffset.y * -1, 0);
 		offset = MIN(offset, 60);
 		scrollView.contentInset = UIEdgeInsetsMake(offset, 0.0f, 0.0f, 0.0f);
         
 	} else if (scrollView.isDragging) {
-		BOOL _loading = NO;
+		BOOL loading = NO;
 		if ([self.delegate respondsToSelector:@selector(networkDataSourceIsLoading:)]) {
-			_loading = [self.delegate networkDataSourceIsLoading:self];
+			loading = [self.delegate networkDataSourceIsLoading:self];
 		}
-		if (_state == EGOOPullRefreshPulling && scrollView.contentOffset.y > -65.0f && scrollView.contentOffset.y < 0.0f && !_loading) {
+		if (self.state == EGOOPullRefreshPulling && scrollView.contentOffset.y > -65.0f && scrollView.contentOffset.y < 0.0f && !loading) {
 			[self setState:EGOOPullRefreshNormal];
-		} else if (_state == EGOOPullRefreshNormal && scrollView.contentOffset.y < -65.0f && !_loading) {
+		} else if (self.state == EGOOPullRefreshNormal && scrollView.contentOffset.y < -65.0f && !loading) {
 			[self setState:EGOOPullRefreshPulling];
 		}
 		if (scrollView.contentInset.top != 0) {
@@ -151,11 +163,11 @@
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView {
-	BOOL _loading = NO;
+	BOOL loading = NO;
 	if ([self.delegate respondsToSelector:@selector(networkDataSourceIsLoading:)]) {
-		_loading = [self.delegate networkDataSourceIsLoading:self];
+		loading = [self.delegate networkDataSourceIsLoading:self];
 	}
-	if (scrollView.contentOffset.y <= - 65.0f && !_loading) {
+	if (scrollView.contentOffset.y <= - 65.0f && !loading) {
 		if ([self.delegate respondsToSelector:@selector(pullToRefreshViewDidTriggerRefresh:)]) {
 			[self.delegate pullToRefreshViewDidTriggerRefresh:self];
 		}

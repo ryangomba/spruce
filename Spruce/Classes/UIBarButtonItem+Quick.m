@@ -12,7 +12,8 @@
 
 + (UIBarButtonItem *)spinner {
     UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
-    UIView *spinnerContainer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 26, spinner.height)];
+    [spinner startAnimating];
+    UIView *spinnerContainer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 26, spinner.height + 2.0f)];
     [spinnerContainer addSubview:spinner];
     UIBarButtonItem *spinnerItem = [[UIBarButtonItem alloc] initWithCustomView:spinnerContainer];
     return spinnerItem;
