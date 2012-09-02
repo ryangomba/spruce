@@ -67,20 +67,18 @@
 }
 
 - (void)tapped:(UITapGestureRecognizer *)recognizer {
-    _tapped = YES;
-    _tapPosition = [recognizer locationInView:self];
-    [self setNeedsDisplay];
+    NSInteger tapIndex = [_attributedStringDrawer indexForTapAtPoint:[recognizer locationInView:self] inView:self];
+    if (tapIndex != NSNotFound) {
+        NSLog(@"TOUCHED LINK AT INDEX %d", tapIndex);
+    }
 }
 
 - (void)drawRect:(CGRect)rect {
-    [_attributedStringDrawer drawInView:self];
-    if (_tapped) {
-        NSInteger tapIndex = [_attributedStringDrawer indexForTapAtPoint:_tapPosition inView:self];
-        NSLog(@"%d", tapIndex);
-        _tapped = NO;
-    }
-    
+    [super drawRect:rect];
     CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    [_attributedStringDrawer drawInView:self];
+    
     CGContextSetLineWidth(context, 0.5f);
     CGFloat lineLength = self.bounds.size.width;
     CGFloat lineY = self.bounds.size.height - 1.0f;
