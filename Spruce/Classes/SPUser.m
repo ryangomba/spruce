@@ -46,4 +46,20 @@
     return self;
 }
 
+
+#pragma mark -
+#pragma mark Equality Tests
+
+- (NSUInteger)hash {
+    return [self.pk hash];
+}
+
+- (BOOL)isEqual:(id)object {
+    if ([object isKindOfClass:self.class]) {
+        return [self.pk isEqual:[object pk]];
+    }
+    return NO;
+}
+
+
 @end

@@ -10,13 +10,14 @@
 
 #import "SPUser.h"
 #import "SPPost.h"
-#import "SPImageView.h"
+#import "SPAvatarView.h"
 #import "SPAttributedStringCreator.h"
 #import "SPCoreTextView.h"
+#import "SPUserViewController.h"
+#import "SPAppDelegate.h"
 
 #define kTopPadding 10
 #define kHorizontalPadding 10
-#define kImageSize 50
 #define kTextWith 240
 
 @implementation SPFeedPostTableViewCell
@@ -26,11 +27,12 @@
     if (self) {
         [self setSelectionStyle:UITableViewCellEditingStyleNone];
         
-        CGRect avatarRect = CGRectMake(kHorizontalPadding, kTopPadding, kImageSize, kImageSize);
-        _avatarView = [[SPImageView alloc] initWithFrame:avatarRect overlay:YES];
+        _avatarView = [[SPAvatarView alloc] initWithUser:nil];
+        [_avatarView setOrigin:CGPointMake(kHorizontalPadding, kTopPadding)];
+        [_avatarView setTarget:self action:@selector(avatarTapped)];
         [self addSubview:_avatarView];
         
-        CGPoint textOrigin = CGPointMake(2 * kHorizontalPadding + kImageSize, kTopPadding - 1.0f);
+        CGPoint textOrigin = CGPointMake(2 * kHorizontalPadding + kSPAvatarViewDefaultAvatarSize, kTopPadding - 1.0f);
         _textView = [[SPCoreTextView alloc] initWithOrigin:textOrigin width:kTextWith];
         [_textView setShadowColor:HEX_COLOR(0xf5f5f5)];
         [_textView setShadowOffset:1.0f];
@@ -41,13 +43,13 @@
 
 + (CGFloat)heightWithPost:(SPPost *)post {
     CGFloat textHeight = [SPCoreTextView heightWithAttributedString:post.attributedText width:kTextWith];
-    return MAX(textHeight, kImageSize) + 2 * kTopPadding;
+    return MAX(textHeight, kSPAvatarViewDefaultAvatarSize) + 2 * kTopPadding;
 }
 
 - (void)setPost:(SPPost *)post {
     _post = post;
     
-    [_avatarView setImageURL:post.user.avatarURL];
+    [_avatarView setUser:post.user];
     [_textView setAttributedString:post.attributedText];
     
     [self setNeedsDisplay];
@@ -82,6 +84,12 @@
 
 - (void)layoutSubviews {
     //
+}
+
+- (void)avatarTapped {
+    SPUserViewController *userVC = [[SPUserViewController alloc] initWithUser:self.post.user];
+    SPAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    [appDelegate.rootNavigationController pushViewController:userVC animated:YES];
 }
 
 @end

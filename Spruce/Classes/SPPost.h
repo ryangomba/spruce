@@ -16,9 +16,9 @@
 @property (nonatomic, strong) NSDate *timestamp;
 @property (nonatomic, assign) NSInteger numReplies;
 
-@property (nonatomic, strong) NSArray *hashtagInfos;
-@property (nonatomic, strong) NSArray *linkInfos;
-@property (nonatomic, strong) NSArray *mentionInfos;
+@property (nonatomic, strong) NSArray *webLinks;
+@property (nonatomic, strong) NSArray *tagLinks;
+@property (nonatomic, strong) NSArray *userLinks;
 
 @property (nonatomic, strong) NSString *sourceName;
 @property (nonatomic, strong) NSURL *sourceURL;

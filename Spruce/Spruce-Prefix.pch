@@ -16,6 +16,10 @@
     #import "UIView+Framing.h"
 #endif
 
+#define StartTimer() NSDate *__startTimer = [NSDate date];
+#define RestartTimer() __startTimer = [NSDate date];
+#define PrintTimeElapsed() NSLog(@"Time elapsed: %f", [[NSDate date] timeIntervalSinceDate:__startTimer]);
+
 #define HEX_COLOR(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0\
                                             green:((float)((rgbValue & 0xFF00) >> 8))/255.0\
                                             blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]

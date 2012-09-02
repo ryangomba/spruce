@@ -9,6 +9,7 @@
 #import "SPAttributedStringCreator.h"
 
 #import <CoreText/CoreText.h>
+#import "SPLinkedEntity.h"
 
 @interface SPAttributedStringCreator ()
 
@@ -163,18 +164,29 @@
     [self addAttribute:kCTFontAttributeName value:self.largeFont range:fullRange];
 }
 
-- (void)makeBold:(NSRange)range {
-    [self addAttribute:kCTFontAttributeName value:self.boldFont range:range];
-}
-
-- (void)makeLink:(NSRange)range {
-    [self addAttribute:kCTForegroundColorAttributeName value:self.linkTextColor range:range];
-    [self addCustomAttribute:kSPAttributedStringLinkAttribute value:@(YES) range:range];
-}
-
-- (void)makeTag:(NSRange)range {
-    [self addAttribute:kCTForegroundColorAttributeName value:self.tagTextColor range:range];
-    [self addCustomAttribute:kSPAttributedStringLinkAttribute value:@(YES) range:range];
+- (void)attachLinkedEntity:(SPLinkedEntity *)linkedEntity {
+    if (!linkedEntity.linkInfo) {
+        return; // sanity check
+    }
+    
+    NSRange range = linkedEntity.textRange;
+    [self addCustomAttribute:kSPAttributedStringLinkType value:@(linkedEntity.linkType) range:range];
+    [self addCustomAttribute:kSPAttributedStringLinkInfo value:linkedEntity.linkInfo range:range];
+    
+    switch (linkedEntity.linkType) {
+        case SPLinkTypeWeb:
+            [self addAttribute:kCTForegroundColorAttributeName value:self.linkTextColor range:range];
+            break;
+        case SPLinkTypeTag:
+            [self addAttribute:kCTForegroundColorAttributeName value:self.tagTextColor range:range];
+            break;
+        case SPLinkTypeUser:
+            [self addAttribute:kCTForegroundColorAttributeName value:self.linkTextColor range:range];
+            [self addAttribute:kCTFontAttributeName value:self.boldFont range:range];
+            break;
+        default:
+            break;
+    }
 }
 
 

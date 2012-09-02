@@ -6,16 +6,17 @@
 //  Copyright (c) 2012 Ryan Gomba. All rights reserved.
 //
 
-#define kSPAttributedStringLinkAttribute @"is_text_link"
+#define kSPAttributedStringLinkType @"SPLinkType"
+#define kSPAttributedStringLinkInfo @"SPLinkInfo"
+
+@class SPLinkedEntity;
 
 @interface SPAttributedStringCreator : NSObject
 
 - (void)setString:(NSString *)string;
 
 - (void)makeLarge;
-- (void)makeBold:(NSRange)range;
-- (void)makeLink:(NSRange)range;
-- (void)makeTag:(NSRange)range;
+- (void)attachLinkedEntity:(SPLinkedEntity *)linkedEntity;
 
 - (NSMutableAttributedString *)attributedString;
 

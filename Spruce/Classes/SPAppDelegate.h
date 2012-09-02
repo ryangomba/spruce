@@ -6,8 +6,13 @@
 //  Copyright (c) 2012 Ryan Gomba. All rights reserved.
 //
 
+#import "SPLinkedEntity.h"
+
 @interface SPAppDelegate : UIResponder <UIApplicationDelegate>
 
-@property (strong, nonatomic) UIWindow *window;
+@property (nonatomic, strong) UIWindow *window;
+@property (nonatomic, strong) UINavigationController *rootNavigationController;
+
+- (void)openLinkOfType:(SPLinkType)linkType withInfo:(id)linkInfo;
 
 @end

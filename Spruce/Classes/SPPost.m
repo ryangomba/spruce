@@ -13,6 +13,7 @@
 #import "NSDate+AppDotNet.h"
 #import <CoreText/CoreText.h>
 #import "SPAttributedStringCreator.h"
+#import "SPLinkedEntity.h"
 
 @implementation SPPost
 
@@ -25,9 +26,24 @@
         
         NSDictionary *entitiesDict = [dictionary objectOrNilForKey:@"entities"];
         if (entitiesDict) {
-            [self setHashtagInfos:[entitiesDict objectOrNilForKey:@"hashtags"]];
-            [self setLinkInfos:[entitiesDict objectOrNilForKey:@"links"]];
-            [self setMentionInfos:[entitiesDict objectOrNilForKey:@"mentions"]];
+            NSArray *tagLinkDicts = [entitiesDict objectOrNilForKey:@"hashtags"];
+            [self setTagLinks:[NSMutableArray arrayWithCapacity:[tagLinkDicts count]]];
+            for (NSDictionary *dictionary in tagLinkDicts) {
+                SPLinkedEntityTag *link = [[SPLinkedEntityTag alloc] initWithDictionary:dictionary];
+                [(NSMutableArray *)self.tagLinks addObject:link];
+            }
+            NSArray *webLinkDicts = [entitiesDict objectOrNilForKey:@"links"];
+            [self setWebLinks:[NSMutableArray arrayWithCapacity:[webLinkDicts count]]];
+            for (NSDictionary *dictionary in webLinkDicts) {
+                 SPLinkedEntityWeb *link = [[SPLinkedEntityWeb alloc] initWithDictionary:dictionary];
+                 [(NSMutableArray *)self.webLinks addObject:link];
+            }
+            NSArray *userLinkDicts = [entitiesDict objectOrNilForKey:@"mentions"];
+            [self setUserLinks:[NSMutableArray arrayWithCapacity:[userLinkDicts count]]];
+            for (NSDictionary *dictionary in userLinkDicts) {
+                SPLinkedEntityUser *link = [[SPLinkedEntityUser alloc] initWithDictionary:dictionary];
+                [(NSMutableArray *)self.userLinks addObject:link];
+            }
         }
         
         NSDictionary *sourceDict = [dictionary objectOrNilForKey:@"source"];
@@ -50,14 +66,8 @@
 
 // ATTR
 
-- (NSRange)rangeForInfo:(NSDictionary *)info {
-    NSInteger location = [[info objectOrNilForKey:@"pos"] intValue];
-    NSInteger length = [[info objectOrNilForKey:@"len"] intValue];
-    return NSMakeRange(location, length);
-}
-
 - (NSMutableAttributedString *)attributedText {
-    // check if already produced
+    // TODO check if already produced
     
     NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] init];
     SPAttributedStringCreator *creator = [[SPAttributedStringCreator alloc] init];
@@ -67,20 +77,33 @@
     [attributedString appendAttributedString:creator.attributedString];
     
     [creator setString:self.text];
-    for (NSDictionary *hashtagInfo in self.hashtagInfos) {
-        [creator makeTag:[self rangeForInfo:hashtagInfo]];
+    for (SPLinkedEntity *tagLink in self.tagLinks) {
+        [creator attachLinkedEntity:tagLink];
     }
-    for (NSDictionary *hashtagInfo in self.linkInfos) {
-        [creator makeLink:[self rangeForInfo:hashtagInfo]];
+    for (SPLinkedEntity *webLink in self.webLinks) {
+        [creator attachLinkedEntity:webLink];
     }
-    for (NSDictionary *hashtagInfo in self.mentionInfos) {
-        NSRange range = [self rangeForInfo:hashtagInfo];
-        [creator makeLink:range];
-        [creator makeBold:range];
+    for (SPLinkedEntity *userLink in self.userLinks) {
+        [creator attachLinkedEntity:userLink];
     }
     [attributedString appendAttributedString:creator.attributedString];
     
     return attributedString;
+}
+
+
+#pragma mark -
+#pragma mark Equality Tests
+
+- (NSUInteger)hash {
+    return [self.pk hash];
+}
+
+- (BOOL)isEqual:(id)object {
+    if ([object isKindOfClass:self.class]) {
+        return [self.pk isEqual:[object pk]];
+    }
+    return NO;
 }
 
 @end

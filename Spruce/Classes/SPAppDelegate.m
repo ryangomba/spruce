@@ -8,14 +8,17 @@
 
 #import "SPAppDelegate.h"
 
+#import "SPUser.h"
 #import "SPFeedViewController.h"
+#import "SPWebViewController.h"
+#import "SPUserViewController.h"
 
 @implementation SPAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [self setWindow:[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]]];
     
-    [self.window setBackgroundColor:[UIColor whiteColor]];
+    [self.window setBackgroundColor:[UIColor blackColor]];
     [application setStatusBarStyle:UIStatusBarStyleBlackOpaque];
     
     // Custom Navigation Bar
@@ -31,11 +34,19 @@
     [[UINavigationBar appearance] setTitleTextAttributes:textAttributes];
     [[UINavigationBar appearance] setTitleVerticalPositionAdjustment:2.0f forBarMetrics:UIBarMetricsDefault];
     
+    UIImage *defaultButtonImage = [[UIImage imageNamed:@"bar-button-default.png"] stretchableImageWithLeftCapWidth:4 topCapHeight:15];
+    [[UIBarButtonItem appearance] setBackgroundImage:defaultButtonImage forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+    [[UIBarButtonItem appearance] setTitlePositionAdjustment:UIOffsetMake(0.0f, 0.5f) forBarMetrics:UIBarMetricsDefault];
+    
+    UIImage *backButtonImage = [[UIImage imageNamed:@"bar-button-back.png"] stretchableImageWithLeftCapWidth:14 topCapHeight:15];
+    [[UIBarButtonItem appearance] setBackButtonBackgroundImage:backButtonImage forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+    [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(0.0f, 0.5f) forBarMetrics:UIControlStateNormal];
+    
     // Root View Controller
     
     UIViewController *viewController = [[SPFeedViewController alloc] init];
-    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:viewController];
-    [self.window setRootViewController:navController];
+    [self setRootNavigationController:[[UINavigationController alloc] initWithRootViewController:viewController]];
+    [self.window setRootViewController:self.rootNavigationController];
     
     [self.window makeKeyAndVisible];
     return YES;
@@ -61,6 +72,33 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+
+#pragma mark -
+#pragma mark URL Handling
+
+- (void)openLinkOfType:(SPLinkType)linkType withInfo:(id)linkInfo {
+    switch (linkType) {
+        case SPLinkTypeWeb: {
+            SPWebViewController *webVC = [[SPWebViewController alloc] initWithURL:(NSURL *)linkInfo];
+            [self.rootNavigationController pushViewController:webVC animated:YES];
+        } break;
+        
+        case SPLinkTypeTag: {
+            //
+        } break;
+            
+        case SPLinkTypeUser: {
+            SPUser *user = [[SPUser alloc] init];
+            [user setPk:(NSString *)linkInfo];
+            SPUserViewController *userVC = [[SPUserViewController alloc] initWithUser:user];
+            [self.rootNavigationController pushViewController:userVC animated:YES];
+        } break;
+            
+        default:
+            break;
+    }
 }
 
 @end

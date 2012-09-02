@@ -11,6 +11,7 @@
 #import <CoreText/CoreText.h>
 #import "SPAttributedStringCreator.h"
 #import "SPCoreTextHeightCache.h"
+#import "SPAppDelegate.h"
 
 @implementation SPCoreTextView
 
@@ -105,9 +106,13 @@
                     
                 if (CGRectContainsPoint(runRect, point)) {
                     NSDictionary *attributes = (__bridge NSDictionary *)CTRunGetAttributes(run);
-                    BOOL isLink = [[attributes objectForKey:kSPAttributedStringLinkAttribute] boolValue];
+                    SPLinkType linkType = [[attributes objectForKey:kSPAttributedStringLinkType] intValue];
                     
-                    if (isLink) {
+                    if (linkType) {
+                        id linkInfo = [attributes objectForKey:kSPAttributedStringLinkInfo];
+                        SPAppDelegate *appDelegate = (SPAppDelegate *)[[UIApplication sharedApplication] delegate];
+                        [appDelegate openLinkOfType:linkType withInfo:linkInfo];
+                        
                         CFRange stringRange = CTRunGetStringRange(run);
                         tapIndex = stringRange.location;
                         break;

@@ -24,6 +24,12 @@
 - (id)init {
     if (self = [super init]) {
         [self setTitle:NSLocalizedString(@"Timeline", nil)];
+        
+        UIImage *backImage = [UIImage imageNamed:@"bar-glyph-feed.png"];
+        UIBarButtonItem *backButtonItem = [[UIBarButtonItem alloc] init];
+        [backButtonItem setStyle:UIBarButtonItemStyleBordered];
+        [backButtonItem setImage:backImage];
+        [self.navigationItem setBackBarButtonItem:backButtonItem];
     }
     return self;
 }
@@ -48,6 +54,7 @@
     [NSURLConnection sendAsynchronousRequest:feedRequest queue:[NSOperationQueue mainQueue] completionHandler:
      ^(NSURLResponse *response, NSData *data, NSError *error) {
          [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+         // TODO eager loading
          NSArray *feedArray = [data objectFromJSONData];
          NSMutableArray *feedItems = [NSMutableArray arrayWithCapacity:[feedArray count]];
          for (NSDictionary *feedDict in feedArray) {

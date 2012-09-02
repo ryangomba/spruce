@@ -7,11 +7,11 @@
 //
 
 @class SPPost;
-@class SPImageView;
+@class SPAvatarView;
 @class SPCoreTextView;
 
 @interface SPFeedPostTableViewCell : UITableViewCell {
-    SPImageView *_avatarView;
+    SPAvatarView *_avatarView;
     SPCoreTextView *_textView;
 }
 

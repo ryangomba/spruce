@@ -20,6 +20,12 @@
     [self.navigationItem setTitle:displayTitle];
 }
 
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    [self.view setBackgroundColor:HEX_COLOR(0xebebe9)];
+}
+
 
 #pragma mark -
 #pragma mark Rotation
