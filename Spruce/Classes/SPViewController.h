@@ -6,6 +6,8 @@
 //  Copyright (c) 2012 Ryan Gomba. All rights reserved.
 //
 
+#import "UIBarButtonItem+Quick.h"
+
 @interface SPViewController : UIViewController
 
 @end

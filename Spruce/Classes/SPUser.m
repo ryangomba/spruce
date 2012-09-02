@@ -29,7 +29,12 @@
         
         NSDictionary *coverDict = [dictionary objectOrNilForKey:@"cover_image"];
         if (coverDict) {
-            [self setCoverURL:[NSURL URLWithString:[coverDict objectOrNilForKey:@"url"]]];
+            CGFloat coverHeight = [[coverDict objectOrNilForKey:@"height"] intValue];
+            CGFloat coverWidth = [[coverDict objectOrNilForKey:@"width"] intValue];
+            if (coverHeight && coverWidth) {
+                [self setCoverURL:[NSURL URLWithString:[coverDict objectOrNilForKey:@"url"]]];
+                [self setCoverAspectRatio:coverWidth / coverHeight];
+            }
         }
         
         NSDictionary *countsDict = [dictionary objectOrNilForKey:@"counts"];

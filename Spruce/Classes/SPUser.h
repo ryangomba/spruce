@@ -14,6 +14,7 @@
 @property (nonatomic, strong) NSDate *joinedAt;
 @property (nonatomic, strong) NSURL *avatarURL;
 @property (nonatomic, strong) NSURL *coverURL;
+@property (nonatomic, assign) CGFloat coverAspectRatio;
 
 @property (nonatomic, assign) NSInteger numFollowers;
 @property (nonatomic, assign) NSInteger numFollowing;

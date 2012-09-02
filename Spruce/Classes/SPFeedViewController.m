@@ -14,6 +14,17 @@
 #import "SPPost.h"
 #import "SPFeedPostTableViewCell.h"
 #import "SPNetworkQueue.h"
+#import "SPComposeViewController.h"
+
+@interface SPFeedViewController ()
+
+@property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) SPPullToRefreshView *pullToRefreshView;
+
+@property (nonatomic, assign) BOOL isLoading;
+
+@end
+
 
 @implementation SPFeedViewController
 
@@ -24,12 +35,7 @@
 - (id)init {
     if (self = [super init]) {
         [self setTitle:NSLocalizedString(@"Timeline", nil)];
-        
-        UIImage *backImage = [UIImage imageNamed:@"bar-glyph-feed.png"];
-        UIBarButtonItem *backButtonItem = [[UIBarButtonItem alloc] init];
-        [backButtonItem setStyle:UIBarButtonItemStyleBordered];
-        [backButtonItem setImage:backImage];
-        [self.navigationItem setBackBarButtonItem:backButtonItem];
+        [self.navigationItem setBackBarButtonItem:[UIBarButtonItem barButtonWithImageNamed:@"bar-glyph-feed.png"]];
     }
     return self;
 }
@@ -41,12 +47,36 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    tableView_ = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
-    [tableView_ setAutoresizingMask:UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth];
-    [tableView_ setBackgroundColor:HEX_COLOR(0xebebe9)];
-    [tableView_ setDataSource:self];
-    [tableView_ setDelegate:self];
-    [self.view addSubview:tableView_];
+    [self setTableView:[[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain]];
+    [self.tableView setAutoresizingMask:UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth];
+    [self.tableView setBackgroundColor:HEX_COLOR(0xebebe9)];
+    [self.tableView setDataSource:self];
+    [self.tableView setDelegate:self];
+    [self.view addSubview:self.tableView];
+    
+    [self setPullToRefreshView:[[SPPullToRefreshView alloc] initWithDelegate:self]];
+    [self.tableView addSubview:self.pullToRefreshView];
+    
+    [self fetch];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    UIBarButtonItem *composeButton = [UIBarButtonItem barButtonWithImageNamed:@"bar-glyph-plus.png"];
+    [composeButton setTarget:self action:@selector(compose)];
+    [self.navigationItem setRightBarButtonItem:composeButton];
+}
+
+
+#pragma mark -
+#pragma mark DataSource
+
+- (void)fetch {
+    if (self.isLoading) {
+        return;
+    }
+    [self setIsLoading:YES];
     
     NSURL *feedURL = [NSURL appDotNetMainFeedURL];
     NSMutableURLRequest *feedRequest = [NSMutableURLRequest requestWithURL:feedURL];
@@ -61,8 +91,11 @@
              [feedItems addObject:[[SPPost alloc] initWithDictionary:feedDict]];
          }
          [self setFeedItems:feedItems];
-         [tableView_ reloadData];
-    }];
+         [self.tableView reloadData];
+         
+         [self setIsLoading:NO];
+         [self.pullToRefreshView dataSourceDidRefresh:self.tableView];
+     }];
 }
 
 
@@ -97,7 +130,36 @@
 #pragma mark -
 #pragma mark UITableViewDelegate
 
-//
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    [self.pullToRefreshView scrollViewDidScroll:scrollView];
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    [self.pullToRefreshView scrollViewDidEndDragging:scrollView];
+}
+
+
+#pragma mark -
+#pragma mark SPPullToRefreshViewDelegate
+
+- (void)pullToRefreshViewDidTriggerRefresh:(SPPullToRefreshView *)view {
+    [self fetch];
+}
+
+- (BOOL)networkDataSourceIsLoading:(SPPullToRefreshView *)view {
+    return self.isLoading;
+}
+
+
+
+#pragma mark -
+#pragma mark Button Callbacks
+
+- (void)compose {
+    SPComposeViewController *composeVC = [[SPComposeViewController alloc] init];
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:composeVC];
+    [self presentModalViewController:navController animated:YES];
+}
 
 
 @end

@@ -40,10 +40,10 @@
     
     // TODO flipped images still happening?
     
+    NSURL *decodedImageURL = _imageURL;
     NSMutableURLRequest *feedRequest = [NSMutableURLRequest requestWithURL:_imageURL];
     [NSURLConnection sendAsynchronousRequest:feedRequest queue:[NSOperationQueue mainQueue] completionHandler:
      ^(NSURLResponse *response, NSData *data, NSError *error) {
-         NSURL *decodedImageURL = _imageURL;
          [[SPImageDecodeQueue sharedQueue] addOperationWithBlock:^{
              UIImage *decodedImage = [UIImage decodedImageWithData:data];
              if (decodedImage) {

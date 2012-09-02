@@ -9,6 +9,8 @@
 #import "SPViewController.h"
 
 @class SPUser;
+@class SPImageView;
+@class SPAvatarView;
 
 @interface SPUserViewController : SPViewController
 

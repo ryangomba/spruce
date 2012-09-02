@@ -43,7 +43,11 @@
 		947B2A4415F3AC2900E53429 /* bar-button-back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 947B2A4215F3AC2900E53429 /* bar-button-back@2x.png */; };
 		947B2A4515F3AC2900E53429 /* bar-button-default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 947B2A4315F3AC2900E53429 /* bar-button-default@2x.png */; };
 		947B2A4815F3B15600E53429 /* bar-glyph-feed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 947B2A4615F3B15600E53429 /* bar-glyph-feed@2x.png */; };
-		947B2A4915F3B15600E53429 /* bar-glyph-plus@2x.psd in Resources */ = {isa = PBXBuildFile; fileRef = 947B2A4715F3B15600E53429 /* bar-glyph-plus@2x.psd */; };
+		947B2A4B15F3B83D00E53429 /* bar-glyph-plus@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 947B2A4A15F3B83D00E53429 /* bar-glyph-plus@2x.png */; };
+		947B2A4E15F3B88500E53429 /* UIBarButtonItem+Quick.m in Sources */ = {isa = PBXBuildFile; fileRef = 947B2A4D15F3B88500E53429 /* UIBarButtonItem+Quick.m */; };
+		947B2A5115F3BBEB00E53429 /* SPComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 947B2A5015F3BBEB00E53429 /* SPComposeViewController.m */; };
+		947B2A5415F3DC8000E53429 /* SPPullToRefreshView.m in Sources */ = {isa = PBXBuildFile; fileRef = 947B2A5315F3DC7F00E53429 /* SPPullToRefreshView.m */; };
+		947B2A5615F3E2F300E53429 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 947B2A5515F3E2F300E53429 /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -111,7 +115,14 @@
 		947B2A4215F3AC2900E53429 /* bar-button-back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bar-button-back@2x.png"; sourceTree = "<group>"; };
 		947B2A4315F3AC2900E53429 /* bar-button-default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bar-button-default@2x.png"; sourceTree = "<group>"; };
 		947B2A4615F3B15600E53429 /* bar-glyph-feed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bar-glyph-feed@2x.png"; sourceTree = "<group>"; };
-		947B2A4715F3B15600E53429 /* bar-glyph-plus@2x.psd */ = {isa = PBXFileReference; lastKnownFileType = file; path = "bar-glyph-plus@2x.psd"; sourceTree = "<group>"; };
+		947B2A4A15F3B83D00E53429 /* bar-glyph-plus@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bar-glyph-plus@2x.png"; sourceTree = "<group>"; };
+		947B2A4C15F3B88500E53429 /* UIBarButtonItem+Quick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIBarButtonItem+Quick.h"; path = "Classes/UIBarButtonItem+Quick.h"; sourceTree = "<group>"; };
+		947B2A4D15F3B88500E53429 /* UIBarButtonItem+Quick.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIBarButtonItem+Quick.m"; path = "Classes/UIBarButtonItem+Quick.m"; sourceTree = "<group>"; };
+		947B2A4F15F3BBEB00E53429 /* SPComposeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPComposeViewController.h; path = Classes/SPComposeViewController.h; sourceTree = "<group>"; };
+		947B2A5015F3BBEB00E53429 /* SPComposeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPComposeViewController.m; path = Classes/SPComposeViewController.m; sourceTree = "<group>"; };
+		947B2A5215F3DC7F00E53429 /* SPPullToRefreshView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPPullToRefreshView.h; path = Classes/SPPullToRefreshView.h; sourceTree = "<group>"; };
+		947B2A5315F3DC7F00E53429 /* SPPullToRefreshView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPPullToRefreshView.m; path = Classes/SPPullToRefreshView.m; sourceTree = "<group>"; };
+		947B2A5515F3E2F300E53429 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +130,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				947B2A5615F3E2F300E53429 /* QuartzCore.framework in Frameworks */,
 				940CE7F715F261A6000140FB /* UIKit.framework in Frameworks */,
 				940CE7F915F261A6000140FB /* Foundation.framework in Frameworks */,
 				940CE7FB15F261A6000140FB /* CoreGraphics.framework in Frameworks */,
@@ -132,6 +144,7 @@
 		940CE7E715F261A6000140FB = {
 			isa = PBXGroup;
 			children = (
+				947B2A5515F3E2F300E53429 /* QuartzCore.framework */,
 				940CE7FC15F261A7000140FB /* Spruce */,
 				940CE7F515F261A6000140FB /* Frameworks */,
 				940CE7F315F261A6000140FB /* Products */,
@@ -196,7 +209,7 @@
 				947B2A4215F3AC2900E53429 /* bar-button-back@2x.png */,
 				947B2A4315F3AC2900E53429 /* bar-button-default@2x.png */,
 				947B2A4615F3B15600E53429 /* bar-glyph-feed@2x.png */,
-				947B2A4715F3B15600E53429 /* bar-glyph-plus@2x.psd */,
+				947B2A4A15F3B83D00E53429 /* bar-glyph-plus@2x.png */,
 				940CE81115F2642F000140FB /* navbar-bg@2x.png */,
 			);
 			path = Images;
@@ -246,6 +259,8 @@
 				940CE83915F27F19000140FB /* UIImage+Decode.m */,
 				947B2A2C15F300EE00E53429 /* UIView+Framing.h */,
 				947B2A2D15F300EE00E53429 /* UIView+Framing.m */,
+				947B2A4C15F3B88500E53429 /* UIBarButtonItem+Quick.h */,
+				947B2A4D15F3B88500E53429 /* UIBarButtonItem+Quick.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -272,6 +287,8 @@
 				940CE81B15F2671B000140FB /* SPFeedViewController.m */,
 				947B2A3C15F3359C00E53429 /* SPUserViewController.h */,
 				947B2A3D15F3359C00E53429 /* SPUserViewController.m */,
+				947B2A4F15F3BBEB00E53429 /* SPComposeViewController.h */,
+				947B2A5015F3BBEB00E53429 /* SPComposeViewController.m */,
 				947B2A3315F31D6000E53429 /* SPWebViewController.h */,
 				947B2A3415F31D6000E53429 /* SPWebViewController.m */,
 			);
@@ -287,6 +304,8 @@
 				940CE83615F27DCD000140FB /* SPImageView.m */,
 				947B2A3F15F337C700E53429 /* SPAvatarView.h */,
 				947B2A4015F337C700E53429 /* SPAvatarView.m */,
+				947B2A5215F3DC7F00E53429 /* SPPullToRefreshView.h */,
+				947B2A5315F3DC7F00E53429 /* SPPullToRefreshView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -372,7 +391,7 @@
 				947B2A4415F3AC2900E53429 /* bar-button-back@2x.png in Resources */,
 				947B2A4515F3AC2900E53429 /* bar-button-default@2x.png in Resources */,
 				947B2A4815F3B15600E53429 /* bar-glyph-feed@2x.png in Resources */,
-				947B2A4915F3B15600E53429 /* bar-glyph-plus@2x.psd in Resources */,
+				947B2A4B15F3B83D00E53429 /* bar-glyph-plus@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -408,6 +427,9 @@
 				947B2A3B15F3323B00E53429 /* SPDecodedImageCache.m in Sources */,
 				947B2A3E15F3359C00E53429 /* SPUserViewController.m in Sources */,
 				947B2A4115F337C700E53429 /* SPAvatarView.m in Sources */,
+				947B2A4E15F3B88500E53429 /* UIBarButtonItem+Quick.m in Sources */,
+				947B2A5115F3BBEB00E53429 /* SPComposeViewController.m in Sources */,
+				947B2A5415F3DC8000E53429 /* SPPullToRefreshView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

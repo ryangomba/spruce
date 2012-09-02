@@ -6,9 +6,7 @@
 //  Copyright (c) 2012 Ryan Gomba. All rights reserved.
 //
 
-@interface SPWebViewController : SPViewController<UIWebViewDelegate> {
-    UIActivityIndicatorView *_spinner;
-}
+@interface SPWebViewController : SPViewController<UIWebViewDelegate>
 
 @property (nonatomic, strong) UIWebView *webView;
 @property (nonatomic, strong) NSURL *url;

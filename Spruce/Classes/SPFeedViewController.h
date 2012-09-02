@@ -6,9 +6,9 @@
 //  Copyright (c) 2012 Ryan Gomba. All rights reserved.
 //
 
-@interface SPFeedViewController : SPViewController<UITableViewDataSource, UITableViewDelegate> {
-    UITableView *tableView_;
-}
+#import "SPPullToRefreshView.h"
+
+@interface SPFeedViewController : SPViewController<UITableViewDataSource, UITableViewDelegate, SPPullToRefreshViewDelegate>
 
 @property (nonatomic, strong) NSArray *feedItems;
 
