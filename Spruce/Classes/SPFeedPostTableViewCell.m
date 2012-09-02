@@ -12,7 +12,7 @@
 #import "SPPost.h"
 #import "SPImageView.h"
 #import "SPAttributedStringCreator.h"
-#import "UIView+AttributedString.h"
+#import "SPAttributedStringDrawer.h"
 
 #define kTopPadding 15
 #define kHorizontalPadding 10
@@ -26,14 +26,30 @@
     if (self) {
         [self setSelectionStyle:UITableViewCellEditingStyleNone];
         
-        _avatarView = [[SPImageView alloc] initWithFrame:CGRectMake(kHorizontalPadding, kTopPadding, kImageSize, kImageSize)];
+        CGRect avatarRect = CGRectMake(kHorizontalPadding, kTopPadding, kImageSize, kImageSize);
+        _avatarView = [[SPImageView alloc] initWithFrame:avatarRect overlay:YES];
         [self addSubview:_avatarView];
+        
+        _attributedStringDrawer = [self.class attributedStringDrawer];
+        
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapped:)];
+        [self addGestureRecognizer:tap];
     }
     return self;
 }
 
++ (SPAttributedStringDrawer *)attributedStringDrawer {
+    CGPoint textOrigin = CGPointMake(2 * kHorizontalPadding + kImageSize, kTopPadding - 2.0f);
+    SPAttributedStringDrawer *drawer = [[SPAttributedStringDrawer alloc] initWithPosition:textOrigin width:kTextWith];
+    [drawer setShadowColor:HEX_COLOR(0xf5f5f5)];
+    [drawer setShadowOffset:1.0f];
+    return drawer;
+}
+
 + (CGFloat)heightWithPost:(SPPost *)post {
-    CGFloat textHeight = [SPAttributedStringCreator heightForAttributedString:post.attributedText width:kTextWith];
+    SPAttributedStringDrawer *drawer = [SPFeedPostTableViewCell attributedStringDrawer];
+    [drawer setAttributedString:post.attributedText];
+    CGFloat textHeight = [drawer drawnHeight];
     return MAX(textHeight, kImageSize) + 2 * kTopPadding;
 }
 
@@ -41,13 +57,28 @@
     _post = post;
     
     [_avatarView setImageURL:post.user.avatarURL];
+    [_attributedStringDrawer setAttributedString:post.attributedText];
     
     [self setNeedsDisplay];
 }
 
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+    [super setSelected:selected animated:animated];
+}
+
+- (void)tapped:(UITapGestureRecognizer *)recognizer {
+    _tapped = YES;
+    _tapPosition = [recognizer locationInView:self];
+    [self setNeedsDisplay];
+}
+
 - (void)drawRect:(CGRect)rect {
-    CGPoint textOrigin = CGPointMake(2 * kHorizontalPadding + kImageSize, kTopPadding - 2.0f);
-    [self drawAttributedString:self.post.attributedText atPoint:textOrigin width:kTextWith];
+    [_attributedStringDrawer drawInView:self];
+    if (_tapped) {
+        NSInteger tapIndex = [_attributedStringDrawer indexForTapAtPoint:_tapPosition inView:self];
+        NSLog(@"%d", tapIndex);
+        _tapped = NO;
+    }
     
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSetLineWidth(context, 0.5f);

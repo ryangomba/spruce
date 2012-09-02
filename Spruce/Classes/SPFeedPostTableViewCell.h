@@ -8,9 +8,14 @@
 
 @class SPPost;
 @class SPImageView;
+@class SPAttributedStringDrawer;
 
 @interface SPFeedPostTableViewCell : UITableViewCell {
     SPImageView *_avatarView;
+    SPAttributedStringDrawer *_attributedStringDrawer;
+    
+    BOOL _tapped;
+    CGPoint _tapPosition;
 }
 
 @property (nonatomic, strong) SPPost *post;

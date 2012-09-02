@@ -14,10 +14,15 @@
 
 @implementation SPImageView
 
-- (id)initWithFrame:(CGRect)frame {
+- (id)initWithFrame:(CGRect)frame overlay:(BOOL)overlay {
     self = [super initWithFrame:frame];
     if (self) {
-        //
+        if (overlay) {
+            UIImageView *overlay = [[UIImageView alloc] initWithFrame:self.bounds];
+            [overlay setAutoresizingMask:UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight];
+            [overlay setImage:[[UIImage imageNamed:@"avatar-overlay.png"] stretchableImageWithLeftCapWidth:2 topCapHeight:2]];
+            [self addSubview:overlay];
+        }
     }
     return self;
 }

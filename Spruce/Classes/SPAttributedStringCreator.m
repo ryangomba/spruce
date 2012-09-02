@@ -8,6 +8,8 @@
 
 #import "SPAttributedStringCreator.h"
 
+#import <CoreText/CoreText.h>
+
 @interface SPAttributedStringCreator ()
 
 @property (nonatomic, copy) NSString *string;
@@ -123,6 +125,12 @@
     });
 }
 
+- (void)addCustomAttribute:(NSString *)attribute value:(id)value range:(NSRange)range {
+    dispatch_sync(self.attributeQueue, ^{
+        [self.attributedString addAttribute:attribute value:value range:range];
+    });
+}
+
 
 #pragma mark -
 #pragma mark Property Methods
@@ -164,19 +172,7 @@
 
 - (void)makeLink:(NSRange)range {
     [self addAttribute:kCTForegroundColorAttributeName value:self.linkTextColor range:range];
-}
-
-
-#pragma mark -
-#pragma mark Class Methods
-
-+ (CGFloat)heightForAttributedString:(NSMutableAttributedString *)attributedString width:(CGFloat)width {
-    NSAttributedString *attrStringCopy = [attributedString copy];
-    CTFramesetterRef framesetter = CTFramesetterCreateWithAttributedString((__bridge CFAttributedStringRef)attrStringCopy);
-    CGSize frameSize = CTFramesetterSuggestFrameSizeWithConstraints(framesetter, CFRangeMake(0,0), NULL, CGSizeMake(width, FLT_MAX), NULL);
-    frameSize.height = ceil(frameSize.height);
-    CFRelease(framesetter);
-    return frameSize.height;
+    [self addCustomAttribute:kSPAttributedStringLinkAttribute value:@(YES) range:range];
 }
 
 

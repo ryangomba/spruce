@@ -10,4 +10,6 @@
 
 @property (nonatomic, strong) NSURL *imageURL;
 
+- (id)initWithFrame:(CGRect)frame overlay:(BOOL)overlay;
+
 @end

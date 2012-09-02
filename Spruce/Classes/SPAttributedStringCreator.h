@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 Ryan Gomba. All rights reserved.
 //
 
-#import <CoreText/CoreText.h>
+#define kSPAttributedStringLinkAttribute @"is_text_link"
 
 @interface SPAttributedStringCreator : NSObject
 
@@ -22,7 +22,5 @@
 - (void)makeLink:(NSRange)range;
 
 - (NSMutableAttributedString *)attributedString;
-
-+ (CGFloat)heightForAttributedString:(NSMutableAttributedString *)attributedString width:(CGFloat)width;
 
 @end
