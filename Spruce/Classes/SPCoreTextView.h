@@ -16,4 +16,6 @@
 
 - (id)initWithOrigin:(CGPoint)origin width:(CGFloat)width;
 
++ (CGFloat)heightWithAttributedString:(NSMutableAttributedString *)string width:(CGFloat)width;
+
 @end

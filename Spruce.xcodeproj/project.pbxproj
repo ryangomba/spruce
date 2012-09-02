@@ -34,6 +34,7 @@
 		940CE85615F2B5E8000140FB /* avatar-overlay@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 940CE85515F2B5E8000140FB /* avatar-overlay@2x.png */; };
 		940CE85915F2BC5B000140FB /* SPCoreTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 940CE85815F2BC5B000140FB /* SPCoreTextView.m */; };
 		947B2A2E15F300EE00E53429 /* UIView+Framing.m in Sources */ = {isa = PBXBuildFile; fileRef = 947B2A2D15F300EE00E53429 /* UIView+Framing.m */; };
+		947B2A3215F30D0700E53429 /* SPCoreTextHeightCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 947B2A3115F30D0700E53429 /* SPCoreTextHeightCache.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -86,6 +87,8 @@
 		940CE85815F2BC5B000140FB /* SPCoreTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPCoreTextView.m; path = Classes/SPCoreTextView.m; sourceTree = "<group>"; };
 		947B2A2C15F300EE00E53429 /* UIView+Framing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+Framing.h"; path = "Classes/UIView+Framing.h"; sourceTree = "<group>"; };
 		947B2A2D15F300EE00E53429 /* UIView+Framing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+Framing.m"; path = "Classes/UIView+Framing.m"; sourceTree = "<group>"; };
+		947B2A3015F30D0700E53429 /* SPCoreTextHeightCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPCoreTextHeightCache.h; path = Classes/SPCoreTextHeightCache.h; sourceTree = "<group>"; };
+		947B2A3115F30D0700E53429 /* SPCoreTextHeightCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPCoreTextHeightCache.m; path = Classes/SPCoreTextHeightCache.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +145,7 @@
 				940CE84E15F292A9000140FB /* Helpers */,
 				940CE84615F28075000140FB /* Categories */,
 				940CE84415F2805B000140FB /* Queues */,
+				947B2A2F15F30CE400E53429 /* Caches */,
 				940CE84515F28064000140FB /* Vendor */,
 				940CE81015F2642F000140FB /* Images */,
 				940CE81315F26535000140FB /* Fonts */,
@@ -263,6 +267,15 @@
 			name = Helpers;
 			sourceTree = "<group>";
 		};
+		947B2A2F15F30CE400E53429 /* Caches */ = {
+			isa = PBXGroup;
+			children = (
+				947B2A3015F30D0700E53429 /* SPCoreTextHeightCache.h */,
+				947B2A3115F30D0700E53429 /* SPCoreTextHeightCache.m */,
+			);
+			name = Caches;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -348,6 +361,7 @@
 				940CE85115F292D7000140FB /* SPAttributedStringCreator.m in Sources */,
 				940CE85915F2BC5B000140FB /* SPCoreTextView.m in Sources */,
 				947B2A2E15F300EE00E53429 /* UIView+Framing.m in Sources */,
+				947B2A3215F30D0700E53429 /* SPCoreTextHeightCache.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

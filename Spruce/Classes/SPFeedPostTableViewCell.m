@@ -14,7 +14,7 @@
 #import "SPAttributedStringCreator.h"
 #import "SPCoreTextView.h"
 
-#define kTopPadding 15
+#define kTopPadding 10
 #define kHorizontalPadding 10
 #define kImageSize 50
 #define kTextWith 240
@@ -30,24 +30,18 @@
         _avatarView = [[SPImageView alloc] initWithFrame:avatarRect overlay:YES];
         [self addSubview:_avatarView];
         
-        _textView = [self.class makeCoreTextView];
+        CGPoint textOrigin = CGPointMake(2 * kHorizontalPadding + kImageSize, kTopPadding - 1.0f);
+        _textView = [[SPCoreTextView alloc] initWithOrigin:textOrigin width:kTextWith];
+        [_textView setShadowColor:HEX_COLOR(0xf5f5f5)];
+        [_textView setShadowOffset:1.0f];
         [self addSubview:_textView];
     }
     return self;
 }
 
-+ (SPCoreTextView *)makeCoreTextView {
-    CGPoint textOrigin = CGPointMake(2 * kHorizontalPadding + kImageSize, kTopPadding - 2.0f);
-    SPCoreTextView *textView = [[SPCoreTextView alloc] initWithOrigin:textOrigin width:kTextWith];
-    [textView setShadowColor:HEX_COLOR(0xf5f5f5)];
-    [textView setShadowOffset:1.0f];
-    return textView;
-}
-
 + (CGFloat)heightWithPost:(SPPost *)post {
-    SPCoreTextView *textView = [SPFeedPostTableViewCell makeCoreTextView];
-    [textView setAttributedString:post.attributedText];
-    return MAX(textView.height, kImageSize) + 2 * kTopPadding;
+    CGFloat textHeight = [SPCoreTextView heightWithAttributedString:post.attributedText width:kTextWith];
+    return MAX(textHeight, kImageSize) + 2 * kTopPadding;
 }
 
 - (void)setPost:(SPPost *)post {
@@ -62,8 +56,6 @@
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 }
-
-
 
 - (void)drawRect:(CGRect)rect {
     [super drawRect:rect];

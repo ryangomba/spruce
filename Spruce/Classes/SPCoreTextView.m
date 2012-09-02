@@ -10,6 +10,7 @@
 
 #import <CoreText/CoreText.h>
 #import "SPAttributedStringCreator.h"
+#import "SPCoreTextHeightCache.h"
 
 @implementation SPCoreTextView
 
@@ -22,13 +23,23 @@
     return self;
 }
 
-- (CGFloat)height {
-    if (!_heightIsValid && self.attributedString) {
-        CTFramesetterRef framesetter = CTFramesetterCreateWithAttributedString((__bridge CFAttributedStringRef)self.attributedString);
-        CGSize sizeConstraints = CGSizeMake(self.frame.size.width, FLT_MAX);
++ (CGFloat)heightWithAttributedString:(NSMutableAttributedString *)string width:(CGFloat)width {
+    SPCoreTextHeightCache *heightCache = [SPCoreTextHeightCache sharedCache];
+    NSNumber *height = [heightCache objectForKey:string];
+    if (!height) {
+        CTFramesetterRef framesetter = CTFramesetterCreateWithAttributedString((__bridge CFAttributedStringRef)string);
+        CGSize sizeConstraints = CGSizeMake(width, FLT_MAX);
         CGSize frameSize = CTFramesetterSuggestFrameSizeWithConstraints(framesetter, CFRangeMake(0,0), NULL, sizeConstraints, NULL);
         CFRelease(framesetter);
-        [self setHeight:ceil(frameSize.height)];
+        height = @(ceil(frameSize.height));
+        [heightCache setObject:height forKey:string];
+    }
+    return [height floatValue];
+}
+
+- (CGFloat)height {
+    if (!_heightIsValid && self.attributedString) {
+        [self setHeight:[self.class heightWithAttributedString:self.attributedString width:self.width]];
         [self setNeedsDisplay];
         _heightIsValid = YES;
     }
