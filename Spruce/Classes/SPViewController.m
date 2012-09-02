@@ -23,7 +23,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.view setBackgroundColor:HEX_COLOR(0xebebe9)];
+    [self.view setBackgroundColor:kSPBackgroundColor];
 }
 
 

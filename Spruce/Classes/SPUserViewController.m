@@ -39,8 +39,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    NSInteger coverHeight = MAX(floorf(320 / self.user.coverAspectRatio), 100);
-    [self setCoverImageView:[[SPImageView alloc] initWithFrame:CGRectMake(0, 0, 320, coverHeight)]];
+    NSInteger coverHeight = MAX(floorf(kSPDeviceWidth / self.user.coverAspectRatio), 100);
+    [self setCoverImageView:[[SPImageView alloc] initWithFrame:CGRectMake(0, 0, kSPDeviceWidth, coverHeight)]];
     [self.coverImageView setContentMode:UIViewContentModeScaleAspectFill];
     [self.coverImageView setImageURL:self.user.coverURL];
     [self.view addSubview:self.coverImageView];

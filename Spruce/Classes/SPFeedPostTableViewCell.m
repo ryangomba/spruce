@@ -16,8 +16,6 @@
 #import "SPUserViewController.h"
 #import "SPAppDelegate.h"
 
-#define kTopPadding 10
-#define kHorizontalPadding 10
 #define kTextWith 240
 
 @interface SPFeedPostTableViewCell ()
@@ -36,13 +34,13 @@
         [self setSelectionStyle:UITableViewCellEditingStyleNone];
         
         self.avatarView = [[SPAvatarView alloc] initWithUser:nil];
-        [self.avatarView setOrigin:CGPointMake(kHorizontalPadding, kTopPadding)];
+        [self.avatarView setOrigin:CGPointMake(kSPDefaultPadding, kSPDefaultPadding)];
         [self.avatarView setTarget:self action:@selector(avatarTapped)];
         [self addSubview:self.avatarView];
         
-        CGPoint textOrigin = CGPointMake(2 * kHorizontalPadding + kSPAvatarViewDefaultAvatarSize, kTopPadding - 1.0f);
+        CGPoint textOrigin = CGPointMake(2 * kSPDefaultPadding + kSPAvatarViewDefaultAvatarSize, kSPDefaultPadding - 1.0f);
         self.textView = [[SPCoreTextView alloc] initWithOrigin:textOrigin width:kTextWith];
-        [self.textView setShadowColor:HEX_COLOR(0xf5f5f5)];
+        [self.textView setShadowColor:kSPHighlightColor];
         [self.textView setShadowOffset:1.0f];
         [self addSubview:self.textView];
     }
@@ -51,7 +49,7 @@
 
 + (CGFloat)heightWithPost:(SPPost *)post {
     CGFloat textHeight = [SPCoreTextView heightWithAttributedString:post.attributedText width:kTextWith];
-    return MAX(textHeight, kSPAvatarViewDefaultAvatarSize) + 2 * kTopPadding;
+    return MAX(textHeight, kSPAvatarViewDefaultAvatarSize) + 2 * kSPDefaultPadding;
 }
 
 - (void)setPost:(SPPost *)post {
@@ -75,7 +73,7 @@
     CGFloat lineLength = self.bounds.size.width;
     CGFloat lineY = self.bounds.size.height - 1.0f;
     
-    [HEX_COLOR(0xaaaaaa) set];
+    [kSPLineColor set];
     CGContextBeginPath(context);
     CGContextMoveToPoint(context, 0.0f, lineY);
     CGContextAddLineToPoint(context, lineLength, lineY);
@@ -83,7 +81,7 @@
     
     lineY += 0.5f;
     
-    [HEX_COLOR(0xffffff) set];
+    [[UIColor whiteColor] set];
     CGContextBeginPath(context);
     CGContextMoveToPoint(context, 0.0f, lineY);
     CGContextAddLineToPoint(context, lineLength, lineY);

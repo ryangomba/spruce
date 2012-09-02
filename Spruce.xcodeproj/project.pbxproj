@@ -123,6 +123,7 @@
 		947B2A5215F3DC7F00E53429 /* SPPullToRefreshView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPPullToRefreshView.h; path = Classes/SPPullToRefreshView.h; sourceTree = "<group>"; };
 		947B2A5315F3DC7F00E53429 /* SPPullToRefreshView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPPullToRefreshView.m; path = Classes/SPPullToRefreshView.m; sourceTree = "<group>"; };
 		947B2A5515F3E2F300E53429 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		947B2A6015F40A0100E53429 /* SPConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPConstants.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,7 +145,6 @@
 		940CE7E715F261A6000140FB = {
 			isa = PBXGroup;
 			children = (
-				947B2A5515F3E2F300E53429 /* QuartzCore.framework */,
 				940CE7FC15F261A7000140FB /* Spruce */,
 				940CE7F515F261A6000140FB /* Frameworks */,
 				940CE7F315F261A6000140FB /* Products */,
@@ -162,6 +162,7 @@
 		940CE7F515F261A6000140FB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				947B2A5515F3E2F300E53429 /* QuartzCore.framework */,
 				940CE84C15F28C1E000140FB /* CoreText.framework */,
 				940CE7F615F261A6000140FB /* UIKit.framework */,
 				940CE7F815F261A6000140FB /* Foundation.framework */,
@@ -173,6 +174,7 @@
 		940CE7FC15F261A7000140FB /* Spruce */ = {
 			isa = PBXGroup;
 			children = (
+				947B2A6015F40A0100E53429 /* SPConstants.h */,
 				940CE80D15F2641C000140FB /* SPAppDelegate.h */,
 				940CE80E15F2641C000140FB /* SPAppDelegate.m */,
 				940CE84815F28094000140FB /* View Controllers */,

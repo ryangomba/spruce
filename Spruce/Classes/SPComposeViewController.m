@@ -9,6 +9,9 @@
 #import "SPComposeViewController.h"
 
 @interface SPComposeViewController ()
+
+@property (nonatomic, strong) UITextView *textView;
+
 @end
 
 
@@ -32,10 +35,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    //
+    [self setTextView:[[UITextView alloc] initWithFrame:CGRectMake(kSPDefaultPadding, kSPDefaultPadding, kSPDefaultContentWidth, 200)]];
+    [self.textView setBackgroundColor:[UIColor clearColor]];
+    [self.textView setFont:[UIFont systemFontOfSize:15.0f]];
+    [self.view addSubview:self.textView];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    [self.textView becomeFirstResponder];
+    
     [super viewWillAppear:animated];
     
     UIBarButtonItem *cancelButton = [UIBarButtonItem barButtonWithTitle:NSLocalizedString(@"Cancel", nil)];

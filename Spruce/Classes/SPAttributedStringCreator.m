@@ -84,42 +84,42 @@
 
 - (CTFontRef)defaultFont {
     if (self.defaultFont == NULL) {
-        self.defaultFont = CTFontCreateWithName((CFStringRef)@"HelveticaNeue", 15.0f, NULL);
+        self.defaultFont = kSPDefaultCTFont;
     }
     return self.defaultFont;
 }
 
 - (CTFontRef)boldFont {
     if (self.boldFont == NULL) {
-        self.boldFont = CTFontCreateWithName((CFStringRef)@"HelveticaNeue-Bold", 15.0f, NULL);
+        self.boldFont = kSPBoldCTFont;
     }
     return self.boldFont;
 }
 
 - (CTFontRef)largeFont {
     if (self.largeFont == NULL) {
-        self.largeFont = CTFontCreateWithName((CFStringRef)@"HelveticaNeue-Bold", 17.0f, NULL);
+        self.largeFont = kSPLargeCTFont;
     }
     return self.largeFont;
 }
 
 - (CGColorRef)defaultTextColor {
     if (self.defaultTextColor == NULL) {
-        self.defaultTextColor = CGColorRetain([HEX_COLOR(0x555555) CGColor]);
+        self.defaultTextColor = CGColorRetain([kSPDefaultTextColor CGColor]);
     }
     return self.defaultTextColor;
 }
 
 - (CGColorRef)linkTextColor {
     if (self.linkTextColor == NULL) {
-        self.linkTextColor = CGColorRetain([HEX_COLOR(0x2386aa) CGColor]);
+        self.linkTextColor = CGColorRetain([kSPLinkTextColor CGColor]);
     }
     return self.linkTextColor;
 }
 
 - (CGColorRef)tagTextColor {
     if (self.tagTextColor == NULL) {
-        self.tagTextColor = CGColorRetain([HEX_COLOR(0x999999) CGColor]);
+        self.tagTextColor = CGColorRetain([kSPLightTextColor CGColor]);
     }
     return self.tagTextColor;
 }

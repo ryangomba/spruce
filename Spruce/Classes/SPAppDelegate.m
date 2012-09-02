@@ -25,7 +25,7 @@
     
     UIImage *navBarImage = [[UIImage imageNamed:@"navbar-bg.png"] stretchableImageWithLeftCapWidth:0 topCapHeight:0];
     NSDictionary *textAttributes = @{
-        UITextAttributeFont: [UIFont fontWithName:@"Knockout-50Welterweight" size:22.0f],
+        UITextAttributeFont: kSPTitleUIFont,
         UITextAttributeTextColor: [UIColor whiteColor],
         UITextAttributeTextShadowColor: [UIColor blackColor],
         UITextAttributeTextShadowOffset: [NSValue valueWithUIOffset:UIOffsetMake(0, -1.0f)],

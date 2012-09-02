@@ -16,6 +16,8 @@
 #import "SPNetworkQueue.h"
 #import "SPComposeViewController.h"
 
+#define kDefaultCellHeight 100.0f
+
 @interface SPFeedViewController ()
 
 @property (nonatomic, strong) UITableView *tableView;
@@ -49,9 +51,10 @@
     
     [self setTableView:[[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain]];
     [self.tableView setAutoresizingMask:UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth];
-    [self.tableView setBackgroundColor:HEX_COLOR(0xebebe9)];
+    [self.tableView setBackgroundColor:[UIColor clearColor]];
     [self.tableView setDataSource:self];
     [self.tableView setDelegate:self];
+    [self.tableView setRowHeight:kDefaultCellHeight];
     [self.view addSubview:self.tableView];
     
     [self setPullToRefreshView:[[SPPullToRefreshView alloc] initWithDelegate:self]];
@@ -79,7 +82,7 @@
     [self setIsLoading:YES];
     
     NSURL *feedURL = [NSURL appDotNetMainFeedURL];
-    NSMutableURLRequest *feedRequest = [NSMutableURLRequest requestWithURL:feedURL];
+    NSMutableURLRequest *feedRequest = [NSMutableURLRequest requestWithURL:feedURL cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0f];
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
     [NSURLConnection sendAsynchronousRequest:feedRequest queue:[NSOperationQueue mainQueue] completionHandler:
      ^(NSURLResponse *response, NSData *data, NSError *error) {
