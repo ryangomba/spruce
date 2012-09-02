@@ -22,6 +22,7 @@
 @property (nonatomic, assign) CTFontRef largeFont;
 @property (nonatomic, assign) CGColorRef defaultTextColor;
 @property (nonatomic, assign) CGColorRef linkTextColor;
+@property (nonatomic, assign) CGColorRef tagTextColor;
 @property (nonatomic, assign) dispatch_queue_t attributeQueue;
 
 @end
@@ -115,6 +116,13 @@
     return _linkTextColor;
 }
 
+- (CGColorRef)tagTextColor {
+    if (_tagTextColor == NULL) {
+        _tagTextColor = CGColorRetain([HEX_COLOR(0x999999) CGColor]);
+    }
+    return _tagTextColor;
+}
+
 - (void)setAttributedString:(NSMutableAttributedString *)attributedString {
     _attributedString = attributedString;
 }
@@ -151,27 +159,21 @@
 #pragma mark Public Methods
 
 - (void)makeLarge {
-    [self makeLarge:NSMakeRange(0, [self.string length])];
-}
-
-- (void)makeLarge:(NSRange)range {
-    [self addAttribute:kCTFontAttributeName value:self.largeFont range:range];
-}
-
-- (void)makeBold {
-    [self makeBold:NSMakeRange(0, [self.string length])];
+    NSRange fullRange = NSMakeRange(0, [self.string length]);
+    [self addAttribute:kCTFontAttributeName value:self.largeFont range:fullRange];
 }
 
 - (void)makeBold:(NSRange)range {
     [self addAttribute:kCTFontAttributeName value:self.boldFont range:range];
 }
 
-- (void)makeLink {
-    [self makeLink:NSMakeRange(0, [self.string length])];
-}
-
 - (void)makeLink:(NSRange)range {
     [self addAttribute:kCTForegroundColorAttributeName value:self.linkTextColor range:range];
+    [self addCustomAttribute:kSPAttributedStringLinkAttribute value:@(YES) range:range];
+}
+
+- (void)makeTag:(NSRange)range {
+    [self addAttribute:kCTForegroundColorAttributeName value:self.tagTextColor range:range];
     [self addCustomAttribute:kSPAttributedStringLinkAttribute value:@(YES) range:range];
 }
 

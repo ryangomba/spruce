@@ -13,13 +13,9 @@
 - (void)setString:(NSString *)string;
 
 - (void)makeLarge;
-- (void)makeLarge:(NSRange)range;
-
-- (void)makeBold;
 - (void)makeBold:(NSRange)range;
-
-- (void)makeLink;
 - (void)makeLink:(NSRange)range;
+- (void)makeTag:(NSRange)range;
 
 - (NSMutableAttributedString *)attributedString;
 

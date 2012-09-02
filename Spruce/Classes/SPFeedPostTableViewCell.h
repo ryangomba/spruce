@@ -8,11 +8,11 @@
 
 @class SPPost;
 @class SPImageView;
-@class SPAttributedStringDrawer;
+@class SPCoreTextView;
 
 @interface SPFeedPostTableViewCell : UITableViewCell {
     SPImageView *_avatarView;
-    SPAttributedStringDrawer *_attributedStringDrawer;
+    SPCoreTextView *_textView;
 }
 
 @property (nonatomic, strong) SPPost *post;

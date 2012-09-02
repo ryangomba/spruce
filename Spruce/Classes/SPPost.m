@@ -68,7 +68,7 @@
     
     [creator setString:self.text];
     for (NSDictionary *hashtagInfo in self.hashtagInfos) {
-        [creator makeLink:[self rangeForInfo:hashtagInfo]];
+        [creator makeTag:[self rangeForInfo:hashtagInfo]];
     }
     for (NSDictionary *hashtagInfo in self.linkInfos) {
         [creator makeLink:[self rangeForInfo:hashtagInfo]];

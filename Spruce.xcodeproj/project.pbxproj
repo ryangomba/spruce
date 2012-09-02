@@ -32,8 +32,8 @@
 		940CE84D15F28C1F000140FB /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 940CE84C15F28C1E000140FB /* CoreText.framework */; };
 		940CE85115F292D7000140FB /* SPAttributedStringCreator.m in Sources */ = {isa = PBXBuildFile; fileRef = 940CE85015F292D7000140FB /* SPAttributedStringCreator.m */; };
 		940CE85615F2B5E8000140FB /* avatar-overlay@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 940CE85515F2B5E8000140FB /* avatar-overlay@2x.png */; };
-		940CE85915F2BC5B000140FB /* SPAttributedStringDrawer.m in Sources */ = {isa = PBXBuildFile; fileRef = 940CE85815F2BC5B000140FB /* SPAttributedStringDrawer.m */; };
-		947B2A2A15F2F78E00E53429 /* UIView+AttributedString.m in Sources */ = {isa = PBXBuildFile; fileRef = 947B2A2915F2F78E00E53429 /* UIView+AttributedString.m */; };
+		940CE85915F2BC5B000140FB /* SPCoreTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 940CE85815F2BC5B000140FB /* SPCoreTextView.m */; };
+		947B2A2E15F300EE00E53429 /* UIView+Framing.m in Sources */ = {isa = PBXBuildFile; fileRef = 947B2A2D15F300EE00E53429 /* UIView+Framing.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -82,10 +82,10 @@
 		940CE84F15F292D7000140FB /* SPAttributedStringCreator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPAttributedStringCreator.h; path = Classes/SPAttributedStringCreator.h; sourceTree = "<group>"; };
 		940CE85015F292D7000140FB /* SPAttributedStringCreator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPAttributedStringCreator.m; path = Classes/SPAttributedStringCreator.m; sourceTree = "<group>"; };
 		940CE85515F2B5E8000140FB /* avatar-overlay@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "avatar-overlay@2x.png"; sourceTree = "<group>"; };
-		940CE85715F2BC5B000140FB /* SPAttributedStringDrawer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPAttributedStringDrawer.h; path = Classes/SPAttributedStringDrawer.h; sourceTree = "<group>"; };
-		940CE85815F2BC5B000140FB /* SPAttributedStringDrawer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPAttributedStringDrawer.m; path = Classes/SPAttributedStringDrawer.m; sourceTree = "<group>"; };
-		947B2A2815F2F78E00E53429 /* UIView+AttributedString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+AttributedString.h"; path = "Classes/UIView+AttributedString.h"; sourceTree = "<group>"; };
-		947B2A2915F2F78E00E53429 /* UIView+AttributedString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+AttributedString.m"; path = "Classes/UIView+AttributedString.m"; sourceTree = "<group>"; };
+		940CE85715F2BC5B000140FB /* SPCoreTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPCoreTextView.h; path = Classes/SPCoreTextView.h; sourceTree = "<group>"; };
+		940CE85815F2BC5B000140FB /* SPCoreTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPCoreTextView.m; path = Classes/SPCoreTextView.m; sourceTree = "<group>"; };
+		947B2A2C15F300EE00E53429 /* UIView+Framing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+Framing.h"; path = "Classes/UIView+Framing.h"; sourceTree = "<group>"; };
+		947B2A2D15F300EE00E53429 /* UIView+Framing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+Framing.m"; path = "Classes/UIView+Framing.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -213,8 +213,8 @@
 				940CE83015F2784F000140FB /* NSDate+AppDotNet.m */,
 				940CE83815F27F19000140FB /* UIImage+Decode.h */,
 				940CE83915F27F19000140FB /* UIImage+Decode.m */,
-				947B2A2815F2F78E00E53429 /* UIView+AttributedString.h */,
-				947B2A2915F2F78E00E53429 /* UIView+AttributedString.m */,
+				947B2A2C15F300EE00E53429 /* UIView+Framing.h */,
+				947B2A2D15F300EE00E53429 /* UIView+Framing.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -257,8 +257,8 @@
 			children = (
 				940CE84F15F292D7000140FB /* SPAttributedStringCreator.h */,
 				940CE85015F292D7000140FB /* SPAttributedStringCreator.m */,
-				940CE85715F2BC5B000140FB /* SPAttributedStringDrawer.h */,
-				940CE85815F2BC5B000140FB /* SPAttributedStringDrawer.m */,
+				940CE85715F2BC5B000140FB /* SPCoreTextView.h */,
+				940CE85815F2BC5B000140FB /* SPCoreTextView.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -346,8 +346,8 @@
 				940CE84015F2803B000140FB /* SPImageDecodeQueue.m in Sources */,
 				940CE84315F28054000140FB /* SPNetworkQueue.m in Sources */,
 				940CE85115F292D7000140FB /* SPAttributedStringCreator.m in Sources */,
-				940CE85915F2BC5B000140FB /* SPAttributedStringDrawer.m in Sources */,
-				947B2A2A15F2F78E00E53429 /* UIView+AttributedString.m in Sources */,
+				940CE85915F2BC5B000140FB /* SPCoreTextView.m in Sources */,
+				947B2A2E15F300EE00E53429 /* UIView+Framing.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
