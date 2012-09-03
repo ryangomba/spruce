@@ -30,7 +30,6 @@
 		940CE84015F2803B000140FB /* SPImageDecodeQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 940CE83F15F2803A000140FB /* SPImageDecodeQueue.m */; };
 		940CE84315F28054000140FB /* SPNetworkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 940CE84215F28053000140FB /* SPNetworkQueue.m */; };
 		940CE84D15F28C1F000140FB /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 940CE84C15F28C1E000140FB /* CoreText.framework */; };
-		940CE85115F292D7000140FB /* SPAttributedStringCreator.m in Sources */ = {isa = PBXBuildFile; fileRef = 940CE85015F292D7000140FB /* SPAttributedStringCreator.m */; };
 		940CE85615F2B5E8000140FB /* avatar-overlay@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 940CE85515F2B5E8000140FB /* avatar-overlay@2x.png */; };
 		940CE85915F2BC5B000140FB /* SPCoreTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 940CE85815F2BC5B000140FB /* SPCoreTextView.m */; };
 		942709FD15F4571A00CA6CF7 /* NSURL+Spruce.m in Sources */ = {isa = PBXBuildFile; fileRef = 942709FC15F4571A00CA6CF7 /* NSURL+Spruce.m */; };
@@ -95,8 +94,6 @@
 		940CE84215F28053000140FB /* SPNetworkQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPNetworkQueue.m; path = Classes/SPNetworkQueue.m; sourceTree = "<group>"; };
 		940CE84B15F280E9000140FB /* SPSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPSingleton.h; sourceTree = "<group>"; };
 		940CE84C15F28C1E000140FB /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
-		940CE84F15F292D7000140FB /* SPAttributedStringCreator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPAttributedStringCreator.h; path = Classes/SPAttributedStringCreator.h; sourceTree = "<group>"; };
-		940CE85015F292D7000140FB /* SPAttributedStringCreator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPAttributedStringCreator.m; path = Classes/SPAttributedStringCreator.m; sourceTree = "<group>"; };
 		940CE85515F2B5E8000140FB /* avatar-overlay@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "avatar-overlay@2x.png"; sourceTree = "<group>"; };
 		940CE85715F2BC5B000140FB /* SPCoreTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPCoreTextView.h; path = Classes/SPCoreTextView.h; sourceTree = "<group>"; };
 		940CE85815F2BC5B000140FB /* SPCoreTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPCoreTextView.m; path = Classes/SPCoreTextView.m; sourceTree = "<group>"; };
@@ -314,6 +311,8 @@
 			children = (
 				940CE83215F27C08000140FB /* SPFeedPostTableViewCell.h */,
 				940CE83315F27C08000140FB /* SPFeedPostTableViewCell.m */,
+				940CE85715F2BC5B000140FB /* SPCoreTextView.h */,
+				940CE85815F2BC5B000140FB /* SPCoreTextView.m */,
 				940CE83515F27DCD000140FB /* SPImageView.h */,
 				940CE83615F27DCD000140FB /* SPImageView.m */,
 				947B2A3F15F337C700E53429 /* SPAvatarView.h */,
@@ -327,10 +326,6 @@
 		940CE84E15F292A9000140FB /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				940CE84F15F292D7000140FB /* SPAttributedStringCreator.h */,
-				940CE85015F292D7000140FB /* SPAttributedStringCreator.m */,
-				940CE85715F2BC5B000140FB /* SPCoreTextView.h */,
-				940CE85815F2BC5B000140FB /* SPCoreTextView.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -430,7 +425,6 @@
 				940CE83D15F28029000140FB /* SPImageLoadQueue.m in Sources */,
 				940CE84015F2803B000140FB /* SPImageDecodeQueue.m in Sources */,
 				940CE84315F28054000140FB /* SPNetworkQueue.m in Sources */,
-				940CE85115F292D7000140FB /* SPAttributedStringCreator.m in Sources */,
 				940CE85915F2BC5B000140FB /* SPCoreTextView.m in Sources */,
 				947B2A2E15F300EE00E53429 /* UIView+Framing.m in Sources */,
 				947B2A3515F31D6000E53429 /* SPWebViewController.m in Sources */,

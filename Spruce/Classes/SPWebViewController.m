@@ -19,6 +19,10 @@
 #pragma mark -
 #pragma mark NSObject
 
+- (void)dealloc {
+    [self.webView setDelegate:nil];
+}
+
 - (id)initWithURL:(NSURL *)url {
     if (self = [super init]) {
         [self setUrl:url];
@@ -36,7 +40,7 @@
     [super viewDidLoad];
 
     [self setWebView:[[UIWebView alloc] initWithFrame:self.view.bounds]];
-    [self.webView setAutoresizingMask:UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight];
+    [self.webView setScalesPageToFit:YES];
     [self.webView setDelegate:self];
     [self.view addSubview:self.webView];
 }
@@ -52,6 +56,13 @@
     [super viewWillDisappear:animated];
     
     [self.webView stopLoading];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    
+    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:@"about:blank"]];
+    [self.webView loadRequest:request];
 }
 
 

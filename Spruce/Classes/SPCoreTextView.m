@@ -108,7 +108,8 @@
     // iterate lines
     
     NSArray *lines = (__bridge NSArray *)CTFrameGetLines(frame);
-    CGPoint *origins = malloc(sizeof(CGPoint) * [lines count]);
+    NSInteger lineCount = [lines count];
+    CGPoint *origins = malloc(sizeof(CGPoint) * lineCount);
     CTFrameGetLineOrigins(frame, CFRangeMake(0, 0), origins);
     NSInteger lineIndex = 0;
     
@@ -116,9 +117,9 @@
         CTLineRef line = (__bridge CTLineRef)lineObject;
         CGFloat lineAscent, lineDescent, lineLeading;
         CGFloat lineWidth = CTLineGetTypographicBounds(line, &lineAscent, &lineDescent, &lineLeading);
-        CGFloat lineHeight = lineAscent + lineDescent + lineLeading;
         CGFloat lineX = origins[lineIndex].x;
         CGFloat lineY = origins[lineIndex].y;
+        CGFloat lineHeight = (lineIndex > 0 ? origins[lineIndex - 1].y : self.height) - lineY;
         CGRect lineRect = CGRectMake(lineX, lineY, lineWidth, lineHeight);
         lineIndex++;
         

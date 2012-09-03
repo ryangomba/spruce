@@ -122,7 +122,8 @@
     NSRange highlightRange;
     UIColor *highlightColor = [self attribute:kHighlightColorKey atIndex:index effectiveRange:&highlightRange];
     if (highlightColor) {
-        UIColor *color = highlight ? highlightColor : [self attribute:kDefaultColorKey atIndex:index effectiveRange:NULL];
+        NSRange colorRange;
+        UIColor *color = highlight ? highlightColor : [self attribute:kDefaultColorKey atIndex:index effectiveRange:&colorRange];
         [self applyColor:color range:highlightRange];
         return YES;
     }

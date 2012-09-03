@@ -52,6 +52,7 @@
     [self setTableView:[[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain]];
     [self.tableView setAutoresizingMask:UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth];
     [self.tableView setBackgroundColor:[UIColor clearColor]];
+    [self.tableView setDelaysContentTouches:NO];
     [self.tableView setDataSource:self];
     [self.tableView setDelegate:self];
     [self.tableView setRowHeight:kDefaultCellHeight];

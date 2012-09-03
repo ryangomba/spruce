@@ -15,7 +15,7 @@
 #import "SPUserViewController.h"
 #import "SPAppDelegate.h"
 
-#define kTextWith 240
+#define kTextWidth 240
 
 @interface SPFeedPostTableViewCell ()
 
@@ -38,7 +38,7 @@
         [self addSubview:self.avatarView];
         
         CGPoint textOrigin = CGPointMake(2 * kSPDefaultPadding + kSPAvatarViewDefaultAvatarSize, kSPDefaultPadding - 1.0f);
-        self.textView = [[SPCoreTextView alloc] initWithOrigin:textOrigin width:kTextWith];
+        self.textView = [[SPCoreTextView alloc] initWithOrigin:textOrigin width:kTextWidth];
         [self.textView setShadowColor:kSPHighlightColor];
         [self.textView setShadowOffset:1.0f];
         [self addSubview:self.textView];
@@ -47,7 +47,7 @@
 }
 
 + (CGFloat)heightWithPost:(SPPost *)post {
-    CGFloat textHeight = [SPCoreTextView heightWithAttributedString:post.attributedText width:kTextWith];
+    CGFloat textHeight = [SPCoreTextView heightWithAttributedString:post.attributedText width:kTextWidth];
     return MAX(textHeight, kSPAvatarViewDefaultAvatarSize) + 2 * kSPDefaultPadding;
 }
 

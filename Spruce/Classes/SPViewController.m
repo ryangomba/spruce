@@ -24,6 +24,16 @@
     [super viewDidLoad];
     
     [self.view setBackgroundColor:kSPBackgroundColor];
+    
+    UISwipeGestureRecognizer *swipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(popSelf)];
+    [swipe setDirection:UISwipeGestureRecognizerDirectionRight];
+    [self.view addGestureRecognizer:swipe];
+}
+
+- (void)popSelf {
+    if ([self.navigationController.viewControllers count] > 1) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 
 

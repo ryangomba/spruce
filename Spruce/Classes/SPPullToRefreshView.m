@@ -32,6 +32,8 @@
 
 - (id)initWithDelegate:(id<SPPullToRefreshViewDelegate>)delegate  {
     if((self = [super initWithFrame:CGRectMake(0, -kHeight, kSPDeviceWidth, kHeight)])) {
+        [self setAutoresizingMask:UIViewAutoresizingFlexibleWidth];
+        
 		UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, self.frame.size.height - 30.0f, self.frame.size.width, 20.0f)];
 		label.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 		label.font = [UIFont systemFontOfSize:12.0f];
