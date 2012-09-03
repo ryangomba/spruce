@@ -33,6 +33,7 @@
 		940CE85115F292D7000140FB /* SPAttributedStringCreator.m in Sources */ = {isa = PBXBuildFile; fileRef = 940CE85015F292D7000140FB /* SPAttributedStringCreator.m */; };
 		940CE85615F2B5E8000140FB /* avatar-overlay@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 940CE85515F2B5E8000140FB /* avatar-overlay@2x.png */; };
 		940CE85915F2BC5B000140FB /* SPCoreTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 940CE85815F2BC5B000140FB /* SPCoreTextView.m */; };
+		942709FD15F4571A00CA6CF7 /* NSURL+Spruce.m in Sources */ = {isa = PBXBuildFile; fileRef = 942709FC15F4571A00CA6CF7 /* NSURL+Spruce.m */; };
 		947B2A2E15F300EE00E53429 /* UIView+Framing.m in Sources */ = {isa = PBXBuildFile; fileRef = 947B2A2D15F300EE00E53429 /* UIView+Framing.m */; };
 		947B2A3515F31D6000E53429 /* SPWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 947B2A3415F31D6000E53429 /* SPWebViewController.m */; };
 		947B2A3815F325FC00E53429 /* SPLinkedEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 947B2A3715F325FC00E53429 /* SPLinkedEntity.m */; };
@@ -99,6 +100,8 @@
 		940CE85515F2B5E8000140FB /* avatar-overlay@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "avatar-overlay@2x.png"; sourceTree = "<group>"; };
 		940CE85715F2BC5B000140FB /* SPCoreTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPCoreTextView.h; path = Classes/SPCoreTextView.h; sourceTree = "<group>"; };
 		940CE85815F2BC5B000140FB /* SPCoreTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPCoreTextView.m; path = Classes/SPCoreTextView.m; sourceTree = "<group>"; };
+		942709FB15F4571A00CA6CF7 /* NSURL+Spruce.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSURL+Spruce.h"; path = "Classes/NSURL+Spruce.h"; sourceTree = "<group>"; };
+		942709FC15F4571A00CA6CF7 /* NSURL+Spruce.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSURL+Spruce.m"; path = "Classes/NSURL+Spruce.m"; sourceTree = "<group>"; };
 		947B2A2C15F300EE00E53429 /* UIView+Framing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+Framing.h"; path = "Classes/UIView+Framing.h"; sourceTree = "<group>"; };
 		947B2A2D15F300EE00E53429 /* UIView+Framing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+Framing.m"; path = "Classes/UIView+Framing.m"; sourceTree = "<group>"; };
 		947B2A3315F31D6000E53429 /* SPWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPWebViewController.h; path = Classes/SPWebViewController.h; sourceTree = "<group>"; };
@@ -256,6 +259,8 @@
 			children = (
 				940CE82015F26AF7000140FB /* NSURL+AppDotNet.h */,
 				940CE82115F26AF7000140FB /* NSURL+AppDotNet.m */,
+				942709FB15F4571A00CA6CF7 /* NSURL+Spruce.h */,
+				942709FC15F4571A00CA6CF7 /* NSURL+Spruce.m */,
 				940CE82915F2721B000140FB /* NSDictionary+Safe.h */,
 				940CE82A15F2721B000140FB /* NSDictionary+Safe.m */,
 				940CE82F15F2784F000140FB /* NSDate+AppDotNet.h */,
@@ -438,6 +443,7 @@
 				947B2A5415F3DC8000E53429 /* SPPullToRefreshView.m in Sources */,
 				947B2A6715F43B4900E53429 /* NSMutableAttributedString+Attributes.m in Sources */,
 				947B2A6B15F441BD00E53429 /* NSMutableAttributedString+Spruce.m in Sources */,
+				942709FD15F4571A00CA6CF7 /* NSURL+Spruce.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

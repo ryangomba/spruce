@@ -12,6 +12,7 @@
 #import "SPFeedViewController.h"
 #import "SPWebViewController.h"
 #import "SPUserViewController.h"
+#import "NSURL+Spruce.h"
 
 @implementation SPAppDelegate
 
@@ -79,31 +80,9 @@
 #pragma mark URL Handling
 
 - (void)openURL:(NSURL *)url {
-    SPWebViewController *webVC = [[SPWebViewController alloc] initWithURL:url];
-    [self.rootNavigationController pushViewController:webVC animated:YES];
+    SPViewController *vc = [NSURL viewControllerForURL:url];
+    [self.rootNavigationController pushViewController:vc animated:YES];
 }
 
-//- (void)openLinkOfType:(SPLinkType)linkType withInfo:(id)linkInfo {
-//    switch (linkType) {
-//        case SPLinkTypeWeb: {
-//            SPWebViewController *webVC = [[SPWebViewController alloc] initWithURL:(NSURL *)linkInfo];
-//            [self.rootNavigationController pushViewController:webVC animated:YES];
-//        } break;
-//        
-//        case SPLinkTypeTag: {
-//            //
-//        } break;
-//            
-//        case SPLinkTypeUser: {
-//            SPUser *user = [[SPUser alloc] init];
-//            [user setPk:(NSString *)linkInfo];
-//            SPUserViewController *userVC = [[SPUserViewController alloc] initWithUser:user];
-//            [self.rootNavigationController pushViewController:userVC animated:YES];
-//        } break;
-//            
-//        default:
-//            break;
-//    }
-//}
 
 @end

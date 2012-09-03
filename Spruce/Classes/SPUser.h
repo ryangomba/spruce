@@ -24,6 +24,7 @@
 @property (nonatomic, assign) BOOL isFollowedByMe;
 @property (nonatomic, assign) BOOL isMuted;
 
+- (id)initWithPK:(NSString *)pk;
 - (id)initWithDictionary:(NSDictionary *)dictionary;
 
 @end

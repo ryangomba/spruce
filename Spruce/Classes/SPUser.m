@@ -13,6 +13,17 @@
 
 @implementation SPUser
 
+
+#pragma mark -
+#pragma mark NSObject
+
+- (id)initWithPK:(NSString *)pk {
+    if (self = [super init]) {
+        [self setPk:pk];
+    }
+    return self;
+}
+
 - (id)initWithDictionary:(NSDictionary *)dictionary {
     if (self = [super init]) {
         [self setPk:[dictionary objectOrNilForKey:@"id"]];
