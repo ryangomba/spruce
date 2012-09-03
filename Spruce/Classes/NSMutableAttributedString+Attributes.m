@@ -119,10 +119,11 @@
 #pragma mark Highlighting
 
 - (BOOL)highlightSpan:(BOOL)highlight atIndex:(NSInteger)index {
-    NSRange range;
-    UIColor *color = [self attribute:highlight ? kHighlightColorKey : kDefaultColorKey atIndex:index effectiveRange:&range];
-    if (color) {
-        [self applyColor:color range:range];
+    NSRange highlightRange;
+    UIColor *highlightColor = [self attribute:kHighlightColorKey atIndex:index effectiveRange:&highlightRange];
+    if (highlightColor) {
+        UIColor *color = highlight ? highlightColor : [self attribute:kDefaultColorKey atIndex:index effectiveRange:NULL];
+        [self applyColor:color range:highlightRange];
         return YES;
     }
     return NO;

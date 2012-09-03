@@ -34,7 +34,6 @@
 		940CE85615F2B5E8000140FB /* avatar-overlay@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 940CE85515F2B5E8000140FB /* avatar-overlay@2x.png */; };
 		940CE85915F2BC5B000140FB /* SPCoreTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 940CE85815F2BC5B000140FB /* SPCoreTextView.m */; };
 		947B2A2E15F300EE00E53429 /* UIView+Framing.m in Sources */ = {isa = PBXBuildFile; fileRef = 947B2A2D15F300EE00E53429 /* UIView+Framing.m */; };
-		947B2A3215F30D0700E53429 /* SPCoreTextHeightCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 947B2A3115F30D0700E53429 /* SPCoreTextHeightCache.m */; };
 		947B2A3515F31D6000E53429 /* SPWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 947B2A3415F31D6000E53429 /* SPWebViewController.m */; };
 		947B2A3815F325FC00E53429 /* SPLinkedEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 947B2A3715F325FC00E53429 /* SPLinkedEntity.m */; };
 		947B2A3B15F3323B00E53429 /* SPDecodedImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 947B2A3A15F3323B00E53429 /* SPDecodedImageCache.m */; };
@@ -102,8 +101,6 @@
 		940CE85815F2BC5B000140FB /* SPCoreTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPCoreTextView.m; path = Classes/SPCoreTextView.m; sourceTree = "<group>"; };
 		947B2A2C15F300EE00E53429 /* UIView+Framing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+Framing.h"; path = "Classes/UIView+Framing.h"; sourceTree = "<group>"; };
 		947B2A2D15F300EE00E53429 /* UIView+Framing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+Framing.m"; path = "Classes/UIView+Framing.m"; sourceTree = "<group>"; };
-		947B2A3015F30D0700E53429 /* SPCoreTextHeightCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPCoreTextHeightCache.h; path = Classes/SPCoreTextHeightCache.h; sourceTree = "<group>"; };
-		947B2A3115F30D0700E53429 /* SPCoreTextHeightCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPCoreTextHeightCache.m; path = Classes/SPCoreTextHeightCache.m; sourceTree = "<group>"; };
 		947B2A3315F31D6000E53429 /* SPWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPWebViewController.h; path = Classes/SPWebViewController.h; sourceTree = "<group>"; };
 		947B2A3415F31D6000E53429 /* SPWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPWebViewController.m; path = Classes/SPWebViewController.m; sourceTree = "<group>"; };
 		947B2A3615F325FC00E53429 /* SPLinkedEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPLinkedEntity.h; path = Classes/SPLinkedEntity.h; sourceTree = "<group>"; };
@@ -336,8 +333,6 @@
 		947B2A2F15F30CE400E53429 /* Caches */ = {
 			isa = PBXGroup;
 			children = (
-				947B2A3015F30D0700E53429 /* SPCoreTextHeightCache.h */,
-				947B2A3115F30D0700E53429 /* SPCoreTextHeightCache.m */,
 				947B2A3915F3323B00E53429 /* SPDecodedImageCache.h */,
 				947B2A3A15F3323B00E53429 /* SPDecodedImageCache.m */,
 			);
@@ -433,7 +428,6 @@
 				940CE85115F292D7000140FB /* SPAttributedStringCreator.m in Sources */,
 				940CE85915F2BC5B000140FB /* SPCoreTextView.m in Sources */,
 				947B2A2E15F300EE00E53429 /* UIView+Framing.m in Sources */,
-				947B2A3215F30D0700E53429 /* SPCoreTextHeightCache.m in Sources */,
 				947B2A3515F31D6000E53429 /* SPWebViewController.m in Sources */,
 				947B2A3815F325FC00E53429 /* SPLinkedEntity.m in Sources */,
 				947B2A3B15F3323B00E53429 /* SPDecodedImageCache.m in Sources */,

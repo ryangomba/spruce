@@ -17,3 +17,7 @@
 + (CGFloat)heightWithAttributedString:(NSMutableAttributedString *)string width:(CGFloat)width;
 
 @end
+
+@interface SPCoreTextHeightCache : NSCache
++ (SPCoreTextHeightCache *)sharedCache;
+@end

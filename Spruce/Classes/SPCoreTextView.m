@@ -10,8 +10,10 @@
 
 #import <CoreText/CoreText.h>
 #import "NSMutableAttributedString+Attributes.h"
-#import "SPCoreTextHeightCache.h"
 #import "SPAppDelegate.h"
+
+#define kSPCoreTextHeightCacheSize 100
+
 
 @interface SPCoreTextView ()
 
@@ -22,7 +24,6 @@
 
 
 @implementation SPCoreTextView
-
 
 #pragma mark -
 #pragma mark NSObject
@@ -151,7 +152,7 @@
 #pragma mark -
 #pragma mark Drawing
 
-- (void)drawRect:(CGRect)rect {
+- (void)drawRect:(CGRect)rect {    
     // set up
     
     CGContextRef context = UIGraphicsGetCurrentContext();
@@ -186,6 +187,24 @@
     // break down
     
     CGContextRestoreGState(context);
+}
+
+@end
+
+
+@implementation SPCoreTextHeightCache
+
+- (id)init {
+    if (self = [super init]) {
+        [self setCountLimit:kSPCoreTextHeightCacheSize];
+    }
+    return self;
+}
+
++ (SPCoreTextHeightCache *)sharedCache {
+    SHARED_INSTANCE_USING_BLOCK(^{
+        return [[SPCoreTextHeightCache alloc] init];
+    });
 }
 
 @end
