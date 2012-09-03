@@ -16,6 +16,13 @@
 #import "NSMutableAttributedString+Attributes.h"
 #import "NSMutableAttributedString+Spruce.h"
 
+@interface SPPost ()
+
+@property (nonatomic, strong) NSMutableAttributedString *attributedText;
+
+@end
+
+
 @implementation SPPost
 
 - (id)initWithDictionary:(NSDictionary *)dictionary {
@@ -65,36 +72,37 @@
 }
 
 
-// ATTR
+#pragma mark -
+#pragma mark Public Methods
 
 - (NSMutableAttributedString *)attributedText {
-    // TODO check if already produced
-    
-    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] init];
-    
-    NSString *usernameString = [NSString stringWithFormat:@"%@\u2029", self.user.name];
-    NSMutableAttributedString *usernameAttributedString = [[NSMutableAttributedString alloc] initWithString:usernameString];
-    [usernameAttributedString setDefaultParagraphSettings];
-    [usernameAttributedString setFont:kSPLargeFont];
-    [usernameAttributedString setColor:kSPDefaultTextColor];
-    [attributedString appendAttributedString:usernameAttributedString];
-    
-    NSMutableAttributedString *bodyAttributedString = [[NSMutableAttributedString alloc] initWithString:self.text];
-    [bodyAttributedString setDefaultParagraphSettings];
-    [bodyAttributedString setFont:kSPDefaultFont];
-    [bodyAttributedString setColor:kSPDefaultTextColor];
-    for (SPLinkedEntity *tagLink in self.tagLinks) {
-        [bodyAttributedString attachLinkedEntity:tagLink];
+    if (!_attributedText) {
+        NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] init];
+        
+        NSString *usernameString = [NSString stringWithFormat:@"%@\u2029", self.user.name];
+        NSMutableAttributedString *usernameAttributedString = [[NSMutableAttributedString alloc] initWithString:usernameString];
+        [usernameAttributedString setDefaultParagraphSettings];
+        [usernameAttributedString setFont:kSPLargeFont];
+        [usernameAttributedString setColor:kSPDefaultTextColor];
+        [attributedString appendAttributedString:usernameAttributedString];
+        
+        NSMutableAttributedString *bodyAttributedString = [[NSMutableAttributedString alloc] initWithString:self.text];
+        [bodyAttributedString setDefaultParagraphSettings];
+        [bodyAttributedString setFont:kSPDefaultFont];
+        [bodyAttributedString setColor:kSPDefaultTextColor];
+        for (SPLinkedEntity *tagLink in self.tagLinks) {
+            [bodyAttributedString attachLinkedEntity:tagLink];
+        }
+        for (SPLinkedEntity *webLink in self.webLinks) {
+            [bodyAttributedString attachLinkedEntity:webLink];
+        }
+        for (SPLinkedEntity *userLink in self.userLinks) {
+            [bodyAttributedString attachLinkedEntity:userLink];
+        }
+        [attributedString appendAttributedString:bodyAttributedString];
+        [self setAttributedText:attributedString];
     }
-    for (SPLinkedEntity *webLink in self.webLinks) {
-        [bodyAttributedString attachLinkedEntity:webLink];
-    }
-    for (SPLinkedEntity *userLink in self.userLinks) {
-        [bodyAttributedString attachLinkedEntity:userLink];
-    }
-    [attributedString appendAttributedString:bodyAttributedString];
-    
-    return attributedString;
+    return _attributedText;
 }
 
 

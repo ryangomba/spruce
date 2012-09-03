@@ -87,17 +87,20 @@
     [NSURLConnection sendAsynchronousRequest:feedRequest queue:[NSOperationQueue mainQueue] completionHandler:
      ^(NSURLResponse *response, NSData *data, NSError *error) {
          [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-         // TODO eager loading
-         NSArray *feedArray = [data objectFromJSONData];
-         NSMutableArray *feedItems = [NSMutableArray arrayWithCapacity:[feedArray count]];
-         for (NSDictionary *feedDict in feedArray) {
-             [feedItems addObject:[[SPPost alloc] initWithDictionary:feedDict]];
-         }
-         [self setFeedItems:feedItems];
-         [self.tableView reloadData];
-         
-         [self setIsLoading:NO];
-         [self.pullToRefreshView dataSourceDidRefresh:self.tableView];
+         [[SPNetworkQueue sharedQueue] addOperationWithBlock:^{
+             // TODO eager loading
+             NSArray *feedArray = [data objectFromJSONData];
+             NSMutableArray *feedItems = [NSMutableArray arrayWithCapacity:[feedArray count]];
+             for (NSDictionary *feedDict in feedArray) {
+                 [feedItems addObject:[[SPPost alloc] initWithDictionary:feedDict]];
+             }
+             [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                 [self setFeedItems:feedItems];
+                 [self.tableView reloadData];
+                 [self setIsLoading:NO];
+                 [self.pullToRefreshView dataSourceDidRefresh:self.tableView];
+             }];
+         }];
      }];
 }
 
