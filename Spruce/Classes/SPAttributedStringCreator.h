@@ -13,11 +13,13 @@
 
 @interface SPAttributedStringCreator : NSObject
 
+@property (nonatomic, strong) NSMutableAttributedString *attributedString;
+
 - (void)setString:(NSString *)string;
 
 - (void)makeLarge;
 - (void)attachLinkedEntity:(SPLinkedEntity *)linkedEntity;
 
-- (NSMutableAttributedString *)attributedString;
+- (void)highlight:(BOOL)highlight linkAtIndex:(NSInteger)index;
 
 @end

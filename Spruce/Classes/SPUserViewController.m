@@ -62,7 +62,7 @@
 #pragma mark Public Methods
 
 - (void)setUser:(SPUser *)user {
-    self.user = user;
+    _user = user;
     
     [self setTitle:user.username];
 }

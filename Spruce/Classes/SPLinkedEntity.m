@@ -25,10 +25,6 @@
     return self;
 }
 
-- (id)linkInfo {
-    return nil; // subclasses should implement
-}
-
 @end
 
 
@@ -39,18 +35,11 @@
 
 - (id)initWithDictionary:(NSDictionary *)dictionary {
     if (self = [super initWithDictionary:dictionary]) {
-        [self setDisplayString:[dictionary objectOrNilForKey:@"text"]];
-        NSString *urlString = [dictionary objectOrNilForKey:@"url"];
-        if (urlString) {
-            [self setUrl:[NSURL URLWithString:urlString]];
-        }
         [self setLinkType:SPLinkTypeWeb];
+        [self setDisplayString:[dictionary objectOrNilForKey:@"text"]];
+        [self setUrl:[NSURL URLWithString:[dictionary objectOrNilForKey:@"url"]]];
     }
     return self;
-}
-
-- (id)linkInfo {
-    return self.url;
 }
 
 @end
@@ -63,14 +52,12 @@
 
 - (id)initWithDictionary:(NSDictionary *)dictionary {
     if (self = [super initWithDictionary:dictionary]) {
-        [self setDisplayString:[dictionary objectOrNilForKey:@"name"]];
         [self setLinkType:SPLinkTypeTag];
+        [self setDisplayString:[dictionary objectOrNilForKey:@"name"]];
+        NSString *urlString = [NSString stringWithFormat:@"spruce://tag/%@", [self.displayString lowercaseString]];
+        [self setUrl:[NSURL URLWithString:urlString]];
     }
     return self;
-}
-
-- (id)linkInfo {
-    return self.displayString;
 }
 
 @end
@@ -83,15 +70,13 @@
 
 - (id)initWithDictionary:(NSDictionary *)dictionary {
     if (self = [super initWithDictionary:dictionary]) {
-        [self setDisplayString:[dictionary objectOrNilForKey:@"name"]];
-        [self setUserPK:[dictionary objectOrNilForKey:@"id"]];
         [self setLinkType:SPLinkTypeUser];
+        [self setDisplayString:[dictionary objectOrNilForKey:@"name"]];
+        NSString *userPK = [dictionary objectOrNilForKey:@"id"];
+        NSString *urlString = [NSString stringWithFormat:@"spruce://user/%@", userPK];
+        [self setUrl:[NSURL URLWithString:urlString]];
     }
     return self;
-}
-
-- (id)linkInfo {
-    return self.userPK;
 }
 
 @end

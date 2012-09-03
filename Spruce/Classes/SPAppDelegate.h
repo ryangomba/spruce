@@ -13,6 +13,6 @@
 @property (nonatomic, strong) UIWindow *window;
 @property (nonatomic, strong) UINavigationController *rootNavigationController;
 
-- (void)openLinkOfType:(SPLinkType)linkType withInfo:(id)linkInfo;
+- (void)openURL:(NSURL *)url;
 
 @end

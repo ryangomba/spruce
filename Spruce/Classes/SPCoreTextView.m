@@ -9,27 +9,35 @@
 #import "SPCoreTextView.h"
 
 #import <CoreText/CoreText.h>
-#import "SPAttributedStringCreator.h"
+#import "NSMutableAttributedString+Attributes.h"
 #import "SPCoreTextHeightCache.h"
 #import "SPAppDelegate.h"
 
 @interface SPCoreTextView ()
 
 @property (nonatomic, assign) BOOL heightIsValid;
+@property (nonatomic, assign) CGPoint touchPoint;
 
 @end
 
 
 @implementation SPCoreTextView
 
+
+#pragma mark -
+#pragma mark NSObject
+
 - (id)initWithOrigin:(CGPoint)origin width:(CGFloat)width {
     if (self = [super initWithFrame:CGRectMake(origin.x, origin.y, width, 1)]) {
         [self setBackgroundColor:[UIColor clearColor]];
-        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapped:)];
-        [self addGestureRecognizer:tap];
+        [self setExclusiveTouch:YES];
     }
     return self;
 }
+
+
+#pragma mark -
+#pragma mark Class Methods
 
 + (CGFloat)heightWithAttributedString:(NSMutableAttributedString *)string width:(CGFloat)width {
     SPCoreTextHeightCache *heightCache = [SPCoreTextHeightCache sharedCache];
@@ -45,6 +53,16 @@
     return [height floatValue];
 }
 
+
+#pragma mark -
+#pragma mark Public Methods
+
+- (void)setAttributedString:(NSMutableAttributedString *)attrString {
+    self.heightIsValid = NO;
+    _attributedString = attrString;
+    [self height];
+}
+
 - (CGFloat)height {
     if (!_heightIsValid && self.attributedString) {
         [self setHeight:[self.class heightWithAttributedString:self.attributedString width:self.width]];
@@ -54,20 +72,25 @@
     return self.frame.size.height;
 }
 
-- (void)setAttributedString:(NSMutableAttributedString *)attrString {
-    self.heightIsValid = NO;
-    self.attributedString = attrString;
-    [self height];
+
+#pragma mark -
+#pragma mark Touches
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    UITouch *touch = [touches anyObject];
+    [self setTouchPoint:[touch locationInView:self]];
+    [self handleTapAtPoint:self.touchPoint forTouchEvent:UIControlEventTouchDown];
 }
 
-- (void)tapped:(UITapGestureRecognizer *)recognizer {
-    NSInteger tapIndex = [self indexForTapAtPoint:[recognizer locationInView:self]];
-    if (tapIndex != NSNotFound) {
-        NSLog(@"TOUCHED LINK AT INDEX %d", tapIndex);
-    }
+- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
+    [self handleTapAtPoint:self.touchPoint forTouchEvent:UIControlEventTouchCancel];
 }
 
-- (NSInteger)indexForTapAtPoint:(CGPoint)point {
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+    [self handleTapAtPoint:self.touchPoint forTouchEvent:UIControlEventTouchUpInside];
+}
+
+- (void)handleTapAtPoint:(CGPoint)point forTouchEvent:(UIControlEvents)touchEvent {
     point.y = self.height - point.y; // flip to match text
     
     // create frame
@@ -83,7 +106,6 @@
     
     // iterate lines
     
-    NSInteger tapIndex = NSNotFound;
     NSArray *lines = (__bridge NSArray *)CTFrameGetLines(frame);
     CGPoint *origins = malloc(sizeof(CGPoint) * [lines count]);
     CTFrameGetLineOrigins(frame, CFRangeMake(0, 0), origins);
@@ -98,45 +120,38 @@
         CGFloat lineY = origins[lineIndex].y;
         CGRect lineRect = CGRectMake(lineX, lineY, lineWidth, lineHeight);
         lineIndex++;
+        
+        // find link index
 
         if (CGRectContainsPoint(lineRect, point)) {
-            NSArray *runs = (__bridge NSArray *)CTLineGetGlyphRuns(line);
-            CGFloat runningLeftOffset = 0;
-            
-            for (id runObject in runs) {
-                CTRunRef run = (__bridge CTRunRef)runObject;
-                CGFloat runAscent, runDescent, runLeading;
-                CGFloat runWidth = CTRunGetTypographicBounds(run, CFRangeMake(0, 0), &runAscent, &runDescent, &runLeading);
-                CGFloat runHeight = runAscent + runDescent + runLeading;
-                CGRect runRect = CGRectMake(lineRect.origin.x + runningLeftOffset, lineRect.origin.y, runWidth, runHeight);
-                runningLeftOffset += runWidth;
-                    
-                if (CGRectContainsPoint(runRect, point)) {
-                    NSDictionary *attributes = (__bridge NSDictionary *)CTRunGetAttributes(run);
-                    SPLinkType linkType = [[attributes objectForKey:kSPAttributedStringLinkType] intValue];
-                    
-                    if (linkType) {
-                        id linkInfo = [attributes objectForKey:kSPAttributedStringLinkInfo];
-                        SPAppDelegate *appDelegate = (SPAppDelegate *)[[UIApplication sharedApplication] delegate];
-                        [appDelegate openLinkOfType:linkType withInfo:linkInfo];
-                        
-                        CFRange stringRange = CTRunGetStringRange(run);
-                        tapIndex = stringRange.location;
-                        break;
-                    }
-                }
-            }
-        }
-        if (tapIndex != NSNotFound) {
+            CFIndex tapIndex = CTLineGetStringIndexForPosition(line, point);
+            [self handleTapAtIndex:tapIndex forTouchEvent:touchEvent];
             break;
         }
     }
     
     free(origins);
-    return tapIndex;
 }
 
-- (void)drawRect:(CGRect)rect {    
+- (void)handleTapAtIndex:(NSInteger)tapIndex forTouchEvent:(UIControlEvents)touchEvent {
+    BOOL needsRedraw = [self.attributedString highlightSpan:(touchEvent == UIControlEventTouchDown) atIndex:tapIndex];
+    if (needsRedraw) {
+        [self setNeedsDisplay];
+    }
+    
+    if (touchEvent == UIControlEventTouchUpInside) {
+        NSURL *url = [self.attributedString urlAtIndex:tapIndex];
+        if (url) {
+            [(SPAppDelegate *)[[UIApplication sharedApplication] delegate] openURL:url];
+        }
+    }
+}
+
+
+#pragma mark -
+#pragma mark Drawing
+
+- (void)drawRect:(CGRect)rect {
     // set up
     
     CGContextRef context = UIGraphicsGetCurrentContext();

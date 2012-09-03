@@ -11,7 +11,6 @@
 #import "SPUser.h"
 #import "SPPost.h"
 #import "SPAvatarView.h"
-#import "SPAttributedStringCreator.h"
 #import "SPCoreTextView.h"
 #import "SPUserViewController.h"
 #import "SPAppDelegate.h"
@@ -53,7 +52,7 @@
 }
 
 - (void)setPost:(SPPost *)post {
-    self.post = post;
+    _post = post;
     
     [self.avatarView setUser:post.user];
     [self.textView setAttributedString:post.attributedText];

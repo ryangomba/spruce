@@ -12,8 +12,9 @@
 #import "NSDictionary+Safe.h"
 #import "NSDate+AppDotNet.h"
 #import <CoreText/CoreText.h>
-#import "SPAttributedStringCreator.h"
 #import "SPLinkedEntity.h"
+#import "NSMutableAttributedString+Attributes.h"
+#import "NSMutableAttributedString+Spruce.h"
 
 @implementation SPPost
 
@@ -70,23 +71,28 @@
     // TODO check if already produced
     
     NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] init];
-    SPAttributedStringCreator *creator = [[SPAttributedStringCreator alloc] init];
     
-    [creator setString:[NSString stringWithFormat:@"%@\u2029", self.user.name]];
-    [creator makeLarge];
-    [attributedString appendAttributedString:creator.attributedString];
+    NSString *usernameString = [NSString stringWithFormat:@"%@\u2029", self.user.name];
+    NSMutableAttributedString *usernameAttributedString = [[NSMutableAttributedString alloc] initWithString:usernameString];
+    [usernameAttributedString setDefaultParagraphSettings];
+    [usernameAttributedString setFont:kSPLargeFont];
+    [usernameAttributedString setColor:kSPDefaultTextColor];
+    [attributedString appendAttributedString:usernameAttributedString];
     
-    [creator setString:self.text];
+    NSMutableAttributedString *bodyAttributedString = [[NSMutableAttributedString alloc] initWithString:self.text];
+    [bodyAttributedString setDefaultParagraphSettings];
+    [bodyAttributedString setFont:kSPDefaultFont];
+    [bodyAttributedString setColor:kSPDefaultTextColor];
     for (SPLinkedEntity *tagLink in self.tagLinks) {
-        [creator attachLinkedEntity:tagLink];
+        [bodyAttributedString attachLinkedEntity:tagLink];
     }
     for (SPLinkedEntity *webLink in self.webLinks) {
-        [creator attachLinkedEntity:webLink];
+        [bodyAttributedString attachLinkedEntity:webLink];
     }
     for (SPLinkedEntity *userLink in self.userLinks) {
-        [creator attachLinkedEntity:userLink];
+        [bodyAttributedString attachLinkedEntity:userLink];
     }
-    [attributedString appendAttributedString:creator.attributedString];
+    [attributedString appendAttributedString:bodyAttributedString];
     
     return attributedString;
 }

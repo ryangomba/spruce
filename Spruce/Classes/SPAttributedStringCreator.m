@@ -14,7 +14,6 @@
 @interface SPAttributedStringCreator ()
 
 @property (nonatomic, copy) NSString *string;
-@property (nonatomic, strong) NSMutableAttributedString *attributedString;
 
 @property (nonatomic, assign) CTTextAlignment textAlignment;
 @property (nonatomic, assign) CTParagraphStyleRef paragraphStyle;
@@ -23,7 +22,9 @@
 @property (nonatomic, assign) CTFontRef largeFont;
 @property (nonatomic, assign) CGColorRef defaultTextColor;
 @property (nonatomic, assign) CGColorRef linkTextColor;
+@property (nonatomic, assign) CGColorRef highlightedLinkTextColor;
 @property (nonatomic, assign) CGColorRef tagTextColor;
+@property (nonatomic, assign) CGColorRef highlightedTagTextColor;
 @property (nonatomic, assign) dispatch_queue_t attributeQueue;
 
 @end
@@ -52,6 +53,10 @@
 //    }
 }
 
+
+// TODO this should be a category!!!!!!!!
+
+
 - (id)init {
     if (self = [super init]) {
         [self setAttributeQueue:dispatch_queue_create("attributedStringAttributorQueue", NULL)];
@@ -68,7 +73,7 @@
 }
 
 - (CTParagraphStyleRef)paragraphStyle {
-    if (self.paragraphStyle == NULL) {
+    if (_paragraphStyle == NULL) {
         CTTextAlignment paragraphAlignment = self.textAlignment;
         CGFloat maxLineHeight = 18.0;
         CGFloat paragraphSpacingBefore = 2.0f;
@@ -77,55 +82,15 @@
             {kCTParagraphStyleSpecifierMaximumLineHeight, sizeof(CGFloat), &maxLineHeight},
             {kCTParagraphStyleSpecifierParagraphSpacingBefore, sizeof(CGFloat), &paragraphSpacingBefore}
         };
-        self.paragraphStyle = CTParagraphStyleCreate(setting, 3);
+        [self setParagraphStyle:CTParagraphStyleCreate(setting, 3)];
     }
-    return self.paragraphStyle;
+    return _paragraphStyle;
 }
 
-- (CTFontRef)defaultFont {
-    if (self.defaultFont == NULL) {
-        self.defaultFont = kSPDefaultCTFont;
-    }
-    return self.defaultFont;
-}
-
-- (CTFontRef)boldFont {
-    if (self.boldFont == NULL) {
-        self.boldFont = kSPBoldCTFont;
-    }
-    return self.boldFont;
-}
-
-- (CTFontRef)largeFont {
-    if (self.largeFont == NULL) {
-        self.largeFont = kSPLargeCTFont;
-    }
-    return self.largeFont;
-}
-
-- (CGColorRef)defaultTextColor {
-    if (self.defaultTextColor == NULL) {
-        self.defaultTextColor = CGColorRetain([kSPDefaultTextColor CGColor]);
-    }
-    return self.defaultTextColor;
-}
-
-- (CGColorRef)linkTextColor {
-    if (self.linkTextColor == NULL) {
-        self.linkTextColor = CGColorRetain([kSPLinkTextColor CGColor]);
-    }
-    return self.linkTextColor;
-}
-
-- (CGColorRef)tagTextColor {
-    if (self.tagTextColor == NULL) {
-        self.tagTextColor = CGColorRetain([kSPLightTextColor CGColor]);
-    }
-    return self.tagTextColor;
-}
+// TODO i have no idea who owns these foundation objects and what memory management should look like for them
 
 - (void)setAttributedString:(NSMutableAttributedString *)attributedString {
-    self.attributedString = attributedString;
+    _attributedString = attributedString;
 }
 
 - (void)addAttribute:(CFTypeRef)attribute value:(CFTypeRef)value range:(NSRange)range {
@@ -145,7 +110,7 @@
 #pragma mark Property Methods
 
 - (void)setString:(NSString *)string {
-    self.string = [string copy];
+    _string = [string copy];
     
     [self setAttributedString:[[NSMutableAttributedString alloc] initWithString:self.string]];
     
@@ -164,29 +129,43 @@
     [self addAttribute:kCTFontAttributeName value:self.largeFont range:fullRange];
 }
 
-- (void)attachLinkedEntity:(SPLinkedEntity *)linkedEntity {
-    if (!linkedEntity.linkInfo) {
-        return; // sanity check
-    }
-    
-    NSRange range = linkedEntity.textRange;
-    [self addCustomAttribute:kSPAttributedStringLinkType value:@(linkedEntity.linkType) range:range];
-    [self addCustomAttribute:kSPAttributedStringLinkInfo value:linkedEntity.linkInfo range:range];
-    
-    switch (linkedEntity.linkType) {
+- (CFTypeRef)colorForLinkType:(SPLinkType)linkType highlighted:(BOOL)highlighted {
+    switch (linkType) {
         case SPLinkTypeWeb:
-            [self addAttribute:kCTForegroundColorAttributeName value:self.linkTextColor range:range];
-            break;
-        case SPLinkTypeTag:
-            [self addAttribute:kCTForegroundColorAttributeName value:self.tagTextColor range:range];
-            break;
         case SPLinkTypeUser:
-            [self addAttribute:kCTForegroundColorAttributeName value:self.linkTextColor range:range];
-            [self addAttribute:kCTFontAttributeName value:self.boldFont range:range];
-            break;
+            return highlighted ? self.highlightedLinkTextColor : self.linkTextColor;
+        case SPLinkTypeTag:
+            return highlighted ? self.highlightedTagTextColor : self.tagTextColor;
         default:
-            break;
+            return self.defaultTextColor;
     }
+}
+
+//- (void)attachLinkedEntity:(SPLinkedEntity *)linkedEntity {
+//    if (!linkedEntity.linkInfo) {
+//        return; // sanity check
+//    }
+//    
+//    NSRange range = linkedEntity.textRange;
+//    [self addCustomAttribute:kSPAttributedStringLinkType value:@(linkedEntity.linkType) range:range];
+//    [self addCustomAttribute:kSPAttributedStringLinkInfo value:linkedEntity.linkInfo range:range];
+//    
+//    CFTypeRef textColor = [self colorForLinkType:linkedEntity.linkType highlighted:NO];
+//    [self addAttribute:kCTForegroundColorAttributeName value:textColor range:range];
+//    
+//    if (linkedEntity.linkType == SPLinkTypeUser) {
+//        [self addAttribute:kCTFontAttributeName value:self.boldFont range:range];
+//    }
+//}
+
+- (void)highlight:(BOOL)highlight linkAtIndex:(NSInteger)index {
+    // TODO this is duplicate work
+    NSRange effectiveRange;
+    NSDictionary *attributes = [self.attributedString attributesAtIndex:index effectiveRange:&effectiveRange];
+    SPLinkType linkType = [[attributes objectForKey:kSPAttributedStringLinkType] intValue];
+    
+    CFTypeRef textColor = [self colorForLinkType:linkType highlighted:highlight];
+    [self addAttribute:kCTForegroundColorAttributeName value:textColor range:effectiveRange];
 }
 
 

@@ -48,6 +48,8 @@
 		947B2A5115F3BBEB00E53429 /* SPComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 947B2A5015F3BBEB00E53429 /* SPComposeViewController.m */; };
 		947B2A5415F3DC8000E53429 /* SPPullToRefreshView.m in Sources */ = {isa = PBXBuildFile; fileRef = 947B2A5315F3DC7F00E53429 /* SPPullToRefreshView.m */; };
 		947B2A5615F3E2F300E53429 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 947B2A5515F3E2F300E53429 /* QuartzCore.framework */; };
+		947B2A6715F43B4900E53429 /* NSMutableAttributedString+Attributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 947B2A6615F43B4900E53429 /* NSMutableAttributedString+Attributes.m */; };
+		947B2A6B15F441BD00E53429 /* NSMutableAttributedString+Spruce.m in Sources */ = {isa = PBXBuildFile; fileRef = 947B2A6A15F441BD00E53429 /* NSMutableAttributedString+Spruce.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -124,6 +126,10 @@
 		947B2A5315F3DC7F00E53429 /* SPPullToRefreshView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPPullToRefreshView.m; path = Classes/SPPullToRefreshView.m; sourceTree = "<group>"; };
 		947B2A5515F3E2F300E53429 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		947B2A6015F40A0100E53429 /* SPConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPConstants.h; sourceTree = "<group>"; };
+		947B2A6515F43B4900E53429 /* NSMutableAttributedString+Attributes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSMutableAttributedString+Attributes.h"; path = "Classes/NSMutableAttributedString+Attributes.h"; sourceTree = "<group>"; };
+		947B2A6615F43B4900E53429 /* NSMutableAttributedString+Attributes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSMutableAttributedString+Attributes.m"; path = "Classes/NSMutableAttributedString+Attributes.m"; sourceTree = "<group>"; };
+		947B2A6915F441BC00E53429 /* NSMutableAttributedString+Spruce.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSMutableAttributedString+Spruce.h"; path = "Classes/NSMutableAttributedString+Spruce.h"; sourceTree = "<group>"; };
+		947B2A6A15F441BD00E53429 /* NSMutableAttributedString+Spruce.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSMutableAttributedString+Spruce.m"; path = "Classes/NSMutableAttributedString+Spruce.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -263,6 +269,10 @@
 				947B2A2D15F300EE00E53429 /* UIView+Framing.m */,
 				947B2A4C15F3B88500E53429 /* UIBarButtonItem+Quick.h */,
 				947B2A4D15F3B88500E53429 /* UIBarButtonItem+Quick.m */,
+				947B2A6515F43B4900E53429 /* NSMutableAttributedString+Attributes.h */,
+				947B2A6615F43B4900E53429 /* NSMutableAttributedString+Attributes.m */,
+				947B2A6915F441BC00E53429 /* NSMutableAttributedString+Spruce.h */,
+				947B2A6A15F441BD00E53429 /* NSMutableAttributedString+Spruce.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -432,6 +442,8 @@
 				947B2A4E15F3B88500E53429 /* UIBarButtonItem+Quick.m in Sources */,
 				947B2A5115F3BBEB00E53429 /* SPComposeViewController.m in Sources */,
 				947B2A5415F3DC8000E53429 /* SPPullToRefreshView.m in Sources */,
+				947B2A6715F43B4900E53429 /* NSMutableAttributedString+Attributes.m in Sources */,
+				947B2A6B15F441BD00E53429 /* NSMutableAttributedString+Spruce.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

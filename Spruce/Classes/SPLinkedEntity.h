@@ -21,7 +21,7 @@ typedef enum {
 @property (nonatomic, assign) SPLinkType linkType;
 @property (nonatomic, assign) NSRange textRange;
 @property (nonatomic, copy) NSString *displayString;
-@property (nonatomic, readonly) id linkInfo;
+@property (nonatomic, strong) NSURL *url;
 
 - (id)initWithDictionary:(NSDictionary *)dictionary;
 
@@ -32,12 +32,10 @@ typedef enum {
 #pragma mark Specific Entities
 
 @interface SPLinkedEntityWeb : SPLinkedEntity
-@property (nonatomic, strong) NSURL *url;
 @end
 
 @interface SPLinkedEntityTag : SPLinkedEntity
 @end
 
 @interface SPLinkedEntityUser : SPLinkedEntity
-@property (nonatomic, copy) NSString *userPK;
 @end

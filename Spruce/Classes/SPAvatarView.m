@@ -37,7 +37,7 @@
 }
 
 - (void)setUser:(SPUser *)user {
-    self.user = user;
+    _user = user;
     
     [self.avatarImageView setImageURL:user.avatarURL];
 }

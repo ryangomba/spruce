@@ -17,7 +17,7 @@
 
 - (void)setImageURL:(NSURL *)imageURL {
     if (![imageURL isEqual:self.imageURL]) {
-        self.imageURL = imageURL;
+        _imageURL = imageURL;
         [self setImage:nil];
         [self fetchImage];
     }

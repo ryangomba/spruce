@@ -25,7 +25,7 @@
     
     UIImage *navBarImage = [[UIImage imageNamed:@"navbar-bg.png"] stretchableImageWithLeftCapWidth:0 topCapHeight:0];
     NSDictionary *textAttributes = @{
-        UITextAttributeFont: kSPTitleUIFont,
+        UITextAttributeFont: kSPTitleFont,
         UITextAttributeTextColor: [UIColor whiteColor],
         UITextAttributeTextShadowColor: [UIColor blackColor],
         UITextAttributeTextShadowOffset: [NSValue valueWithUIOffset:UIOffsetMake(0, -1.0f)],
@@ -78,27 +78,32 @@
 #pragma mark -
 #pragma mark URL Handling
 
-- (void)openLinkOfType:(SPLinkType)linkType withInfo:(id)linkInfo {
-    switch (linkType) {
-        case SPLinkTypeWeb: {
-            SPWebViewController *webVC = [[SPWebViewController alloc] initWithURL:(NSURL *)linkInfo];
-            [self.rootNavigationController pushViewController:webVC animated:YES];
-        } break;
-        
-        case SPLinkTypeTag: {
-            //
-        } break;
-            
-        case SPLinkTypeUser: {
-            SPUser *user = [[SPUser alloc] init];
-            [user setPk:(NSString *)linkInfo];
-            SPUserViewController *userVC = [[SPUserViewController alloc] initWithUser:user];
-            [self.rootNavigationController pushViewController:userVC animated:YES];
-        } break;
-            
-        default:
-            break;
-    }
+- (void)openURL:(NSURL *)url {
+    SPWebViewController *webVC = [[SPWebViewController alloc] initWithURL:url];
+    [self.rootNavigationController pushViewController:webVC animated:YES];
 }
+
+//- (void)openLinkOfType:(SPLinkType)linkType withInfo:(id)linkInfo {
+//    switch (linkType) {
+//        case SPLinkTypeWeb: {
+//            SPWebViewController *webVC = [[SPWebViewController alloc] initWithURL:(NSURL *)linkInfo];
+//            [self.rootNavigationController pushViewController:webVC animated:YES];
+//        } break;
+//        
+//        case SPLinkTypeTag: {
+//            //
+//        } break;
+//            
+//        case SPLinkTypeUser: {
+//            SPUser *user = [[SPUser alloc] init];
+//            [user setPk:(NSString *)linkInfo];
+//            SPUserViewController *userVC = [[SPUserViewController alloc] initWithUser:user];
+//            [self.rootNavigationController pushViewController:userVC animated:YES];
+//        } break;
+//            
+//        default:
+//            break;
+//    }
+//}
 
 @end
