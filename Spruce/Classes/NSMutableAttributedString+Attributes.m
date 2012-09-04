@@ -35,6 +35,44 @@
 
 
 #pragma mark -
+#pragma mark Bold
+
+- (void)setBold:(BOOL)bold {
+    [self setBold:bold range:NSMakeRange(0, [self length])];
+}
+
+- (void)setBold:(BOOL)bold range:(NSRange)range {
+	NSUInteger startPoint = range.location;
+	NSRange effectiveRange;
+    while (startPoint < NSMaxRange(range)) {
+		CTFontRef currentFont = (__bridge CTFontRef)[self attribute:(__bridge NSString *)kCTFontAttributeName atIndex:startPoint effectiveRange:&effectiveRange];
+		NSRange fontRange = NSIntersectionRange(range, effectiveRange);
+		CTFontRef newFont = CTFontCreateCopyWithSymbolicTraits(currentFont, 0.0, NULL, (bold ? kCTFontBoldTrait : 0), kCTFontBoldTrait);
+		if (newFont) {
+			[self removeAttribute:(__bridge NSString *)kCTFontAttributeName range:fontRange];
+			[self addAttribute:(__bridge NSString *)kCTFontAttributeName value:(__bridge id)newFont range:fontRange];
+			CFRelease(newFont);
+		}
+		startPoint = NSMaxRange(effectiveRange);
+    }
+}
+
+
+#pragma mark -
+#pragma mark Underlined
+
+- (void)setUnderlined:(BOOL)underlined {
+    [self setUnderlined:underlined range:NSMakeRange(0, [self length])];
+}
+
+- (void)setUnderlined:(BOOL)underlined range:(NSRange)range {
+    NSNumber *underlineStyle = underlined ? @(kCTUnderlineStyleSingle) : @(kCTUnderlineStyleNone);
+    [self removeAttribute:(__bridge NSString *)kCTUnderlineStyleAttributeName range:range];
+    [self addAttribute:(__bridge NSString *)kCTUnderlineStyleAttributeName value:underlineStyle range:range];
+}
+
+
+#pragma mark -
 #pragma mark Color
 
 - (void)setColor:(UIColor *)color {

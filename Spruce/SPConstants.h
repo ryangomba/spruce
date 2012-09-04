@@ -18,7 +18,7 @@
 // Fonts
 
 #define kSPTitleFont      [UIFont fontWithName:@"Knockout-50Welterweight" size:22.0f]
-#define kSPDefaultFont    [UIFont systemFontOfSize:15.0f]
+#define kSPDefaultFont    [UIFont fontWithName:@"HelveticaNeue" size:15.0f]
 #define kSPBoldFont       [UIFont boldSystemFontOfSize:15.0f]
 #define kSPLargeFont      [UIFont boldSystemFontOfSize:17.0f]
 

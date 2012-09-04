@@ -21,7 +21,6 @@
 
 @implementation SPUserViewController
 
-
 #pragma mark -
 #pragma mark NSObject
 

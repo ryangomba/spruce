@@ -86,6 +86,10 @@
         [usernameAttributedString setColor:kSPDefaultTextColor];
         [attributedString appendAttributedString:usernameAttributedString];
         
+        if (!self.text) {
+            return attributedString;
+        }
+        
         NSMutableAttributedString *bodyAttributedString = [[NSMutableAttributedString alloc] initWithString:self.text];
         [bodyAttributedString setDefaultParagraphSettings];
         [bodyAttributedString setFont:kSPDefaultFont];

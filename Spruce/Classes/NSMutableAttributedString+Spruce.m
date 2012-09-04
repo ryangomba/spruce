@@ -32,6 +32,7 @@
     BOOL isBold = NO;
     switch (linkedEntity.linkType) {
         case SPLinkTypeWeb:
+            [self setUnderlined:YES range:range];
             textColor = kSPLinkTextColor;
             highlightTextColor = kSPHighlightedLinkTextColor;
             break;
@@ -50,7 +51,9 @@
             break;
     }
     
-    [self setFont:isBold ? kSPBoldFont : kSPDefaultFont range:range];
+    if (isBold) {
+        [self setBold:YES range:range];
+    }
     [self setColor:textColor range:range];
     [self setHighlightColor:highlightTextColor range:range];
 }

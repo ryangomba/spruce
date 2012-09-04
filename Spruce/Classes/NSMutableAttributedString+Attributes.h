@@ -11,6 +11,12 @@
 - (void)setFont:(UIFont *)font;
 - (void)setFont:(UIFont *)font range:(NSRange)range;
 
+- (void)setBold:(BOOL)bold;
+- (void)setBold:(BOOL)bold range:(NSRange)range;
+
+- (void)setUnderlined:(BOOL)underlined;
+- (void)setUnderlined:(BOOL)underlined range:(NSRange)range;
+
 - (void)setColor:(UIColor *)color;
 - (void)setColor:(UIColor *)color range:(NSRange)range;
 
